@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgpy1lnpsisrm"]
+
+[ext_resource type="Texture2D" uid="uid://rjhk57cua8u" path="res://assets/images/enemie_ghost_idle.png" id="1_muihu"]
+[ext_resource type="Script" path="res://scenes/enemies/enemie_ghost.gd" id="1_x5yqx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nre1m"]
+radius = 16.0
+height = 82.0
+
+[sub_resource type="Animation" id="Animation_qn5np"]
+resource_name = "fly"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.16, 0.32, 0.5, 0.66, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsd0h"]
+_data = {
+"fly": SubResource("Animation_qn5np")
+}
+
+[node name="Demon" type="CharacterBody2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_x5yqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.9, 1.9)
+texture = ExtResource("1_muihu")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -1)
+shape = SubResource("CapsuleShape2D_nre1m")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jsd0h")
+}

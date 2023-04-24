@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://criqeis0ds8fv"]
+
+[ext_resource type="Texture2D" uid="uid://is7s2ihsm8pw" path="res://assets/images/piso.jpg" id="1_bauwb"]
+[ext_resource type="PackedScene" uid="uid://coqdm6r0xau1d" path="res://scenes/player/player.tscn" id="2_q7v2y"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="3_x4lpx"]
+[ext_resource type="PackedScene" uid="uid://c6te2tn0qjjbb" path="res://scenes/enemies/enemie_demon.tscn" id="4_451gc"]
+[ext_resource type="PackedScene" uid="uid://by4k1wx3y62t3" path="res://scenes/enemies/enemie_beast.tscn" id="5_8mtds"]
+[ext_resource type="PackedScene" uid="uid://bgpy1lnpsisrm" path="res://scenes/enemies/enemie_ghost.tscn" id="6_m388q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qxb6"]
+size = Vector2(1311, 174)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(579.25, 570)
+scale = Vector2(1.09458, 0.2)
+texture = ExtResource("1_bauwb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(580.5, 567)
+shape = SubResource("RectangleShape2D_1qxb6")
+
+[node name="Player" parent="." instance=ExtResource("2_q7v2y")]
+script = ExtResource("3_x4lpx")
+
+[node name="Demon" parent="." instance=ExtResource("4_451gc")]
+position = Vector2(857, 88)
+
+[node name="Beast" parent="." instance=ExtResource("5_8mtds")]
+position = Vector2(661, 96)
+
+[node name="Demon2" parent="." instance=ExtResource("6_m388q")]
+position = Vector2(493, 98)
