@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://coqdm6r0xau1d"]
+[gd_scene load_steps=9 format=3 uid="uid://coqdm6r0xau1d"]
 
+[ext_resource type="PackedScene" uid="uid://cahlx31tahu88" path="res://scenes/pause/pause.tscn" id="2_j5522"]
 [ext_resource type="Texture2D" uid="uid://culqg6pyecuui" path="res://assets/images/AnimationSheet_Character.png" id="2_o2g3m"]
 
 [sub_resource type="GDScript" id="GDScript_l8mtm"]
@@ -7,6 +8,7 @@ script/source = "extends CharacterBody2D
 
 @onready var ap = $AnimationPlayer;
 @onready var sprite = $Sprite2D;
+@onready var margin_container = $CanvasLayer2/MarginContainer
 
 
 const SPEED = 300.0
@@ -45,6 +47,8 @@ func _unhandled_input(_event):
 
 	if Input.is_action_just_released(\"move_right\") or Input.is_action_just_released(\"move_left\"):
 		ap.pause()
+		
+
 		
 		
 	
@@ -127,3 +131,15 @@ shape = SubResource("CapsuleShape2D_csei5")
 libraries = {
 "": SubResource("AnimationLibrary_hnchu")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource("2_j5522")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2

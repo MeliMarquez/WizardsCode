@@ -1,25 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://by4k1wx3y62t3"]
 
+[ext_resource type="Script" path="res://scenes/enemies/enemie_beast.gd" id="1_0mcsj"]
 [ext_resource type="Texture2D" uid="uid://djvxwdhb46jue" path="res://assets/images/enemie_hell_beast_idle.png" id="1_056av"]
-
-[sub_resource type="GDScript" id="GDScript_ew3e1"]
-script/source = "extends CharacterBody2D
-
-@onready var ap = $AnimationPlayer;
-
-const GRAVITY = 1000
-
-func _physics_process(delta):
-	
-	# Si no esta en el piso
-	if not is_on_floor():
-		# Bajar
-		velocity.y += GRAVITY * delta 
-		
-	ap.play(\"fly\")
-	move_and_slide()
-	
-"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nre1m"]
 radius = 20.0
@@ -48,7 +30,7 @@ _data = {
 
 [node name="Beast" type="CharacterBody2D"]
 position = Vector2(0, -1)
-script = SubResource("GDScript_ew3e1")
+script = ExtResource("1_0mcsj")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

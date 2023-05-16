@@ -28,7 +28,7 @@ _data = {
 "fly": SubResource("Animation_qn5np")
 }
 
-[node name="Demon" type="CharacterBody2D"]
+[node name="Ghost" type="CharacterBody2D"]
 position = Vector2(1, 0)
 script = ExtResource("1_x5yqx")
 

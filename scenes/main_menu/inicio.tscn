@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://sm4omjgb8m5i"]
 
-[ext_resource type="Script" path="res://scenes/main_menu/MarginContainer.gd" id="1_0082p"]
+[ext_resource type="Script" path="res://scenes/main_menu/inicio.gd" id="2_f0ify"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="3_52xyy"]
 [ext_resource type="PackedScene" uid="uid://chlqlldhchkff" path="res://scenes/main_menu/fondo.tscn" id="3_an0qn"]
 
@@ -29,7 +29,7 @@ offset_right = -234.0
 offset_bottom = -142.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0082p")
+script = ExtResource("2_f0ify")
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
