@@ -1,32 +1,24 @@
 extends MarginContainer
 
-@onready var enemigo = %Enemigo
-@onready var amigo = %Amigo
-@onready var close = %Close
+@onready var enemy = %Enemy
+@onready var friend = %Friend
 
-var attack = 0
+var spells_menu
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
-	enemigo.pressed.connect(_on_enemigo_pressed)	
-	amigo.pressed.connect(_on_amigo_pressed)
-	close.pressed.connect(_on_close_pressed)
+	enemy.pressed.connect(_on_target_pressed.bind(0))	
+	friend.pressed.connect(_on_target_pressed.bind(1))
+	
+	spells_menu = get_tree().get_first_node_in_group("spells_menu_group")
 
 func open_edition():
 	show()
 	get_tree().paused = true
 
-func _on_enemigo_pressed():
-	self.attack = 0
-	
-func _on_amigo_pressed():
-	self.attack = 1
-	
-func _on_close_pressed():
+## ON BUTTONS PRESSED
+func _on_target_pressed(target_type_input):
+	spells_menu.set_target_type(target_type_input)
 	get_tree().paused = false
 	hide()
-	
-func get_subtype():
-	return self.attack
-
+	spells_menu.set_focus(1)

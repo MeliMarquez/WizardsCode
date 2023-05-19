@@ -1,9 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://criqeis0ds8fv"]
+[gd_scene load_steps=6 format=3 uid="uid://5d26vj4vq78b"]
 
 [ext_resource type="Texture2D" uid="uid://is7s2ihsm8pw" path="res://assets/images/piso.jpg" id="1_bauwb"]
 [ext_resource type="PackedScene" uid="uid://coqdm6r0xau1d" path="res://scenes/player/player.tscn" id="2_q7v2y"]
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="3_x4lpx"]
-[ext_resource type="PackedScene" uid="uid://bgpy1lnpsisrm" path="res://scenes/enemies/enemie_ghost.tscn" id="6_m388q"]
+[ext_resource type="PackedScene" uid="uid://cygke7njggw7b" path="res://scenes/spells_section/spells_menu.tscn" id="4_qjoos"]
+[ext_resource type="PackedScene" uid="uid://cgqq3jtf4xf2j" path="res://scenes/enemies/enemy.tscn" id="6_m388q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1qxb6"]
 size = Vector2(1311, 174)
@@ -23,14 +23,19 @@ position = Vector2(580.5, 567)
 shape = SubResource("RectangleShape2D_1qxb6")
 
 [node name="Player" parent="." instance=ExtResource("2_q7v2y")]
-script = ExtResource("3_x4lpx")
 
-[node name="Ghost1" parent="." instance=ExtResource("6_m388q")]
+[node name="Enemy" parent="." instance=ExtResource("6_m388q")]
 position = Vector2(648, 220)
 
-[node name="Ghost2" parent="." instance=ExtResource("6_m388q")]
+[node name="Enemy2" parent="." instance=ExtResource("6_m388q")]
 position = Vector2(746, 201)
-TYPE_SPRITE = 1
+sprite_type = 1
 
 [node name="Menu" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+
+[node name="SpellsMenu" parent="Menu" instance=ExtResource("4_qjoos")]
+offset_left = 11.0
+offset_top = 504.0
+offset_right = 795.0
+offset_bottom = 630.0

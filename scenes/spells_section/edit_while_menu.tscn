@@ -1,15 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2l3pdm5jnp54"]
+[gd_scene load_steps=3 format=3 uid="uid://bi4vdvord4m5j"]
 
-[ext_resource type="Script" path="res://scenes/spells_section/edit_if_menu.gd" id="1_3j0y1"]
-[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_qv2dt"]
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_vvjhj"]
+[ext_resource type="Script" path="res://scenes/spells_section/edit_while_menu.gd" id="1_wagq8"]
 
-[node name="EditIfMenu" type="MarginContainer"]
+[node name="EditWhileMenu" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3j0y1")
+script = ExtResource("1_wagq8")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -29,22 +30,22 @@ layout_mode = 2
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_qv2dt")
+theme_override_fonts/font = ExtResource("1_vvjhj")
 theme_override_font_sizes/font_size = 60
-text = "Atacar a"
+text = "Iterar sobre..."
 
-[node name="Enemy" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Enemies" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_qv2dt")
+theme_override_fonts/font = ExtResource("1_vvjhj")
 theme_override_font_sizes/font_size = 50
 text = "Enemigos"
 
-[node name="Friend" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Health" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_qv2dt")
+theme_override_fonts/font = ExtResource("1_vvjhj")
 theme_override_font_sizes/font_size = 50
-text = "Amigos"
+text = "Salud"

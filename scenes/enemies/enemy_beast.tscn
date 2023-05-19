@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://by4k1wx3y62t3"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://scenes/enemies/enemie_beast.gd" id="1_0mcsj"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy_beast.gd" id="1_0mcsj"]
 [ext_resource type="Texture2D" uid="uid://djvxwdhb46jue" path="res://assets/images/enemie_hell_beast_idle.png" id="1_056av"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nre1m"]

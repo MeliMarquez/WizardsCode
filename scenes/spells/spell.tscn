@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://4cpyoi0rqesx"]
+[gd_scene load_steps=4 format=3 uid="uid://ck62jojvrs5rn"]
 
-[ext_resource type="Script" path="res://scenes/spells/bala.gd" id="1_argq8"]
-[ext_resource type="Texture2D" uid="uid://d03uhffjf0tis" path="res://assets/images/balablanca.png" id="2_ty31p"]
+[ext_resource type="Script" path="res://scenes/spells/spell.gd" id="1_0h40s"]
+[ext_resource type="Texture2D" uid="uid://d03uhffjf0tis" path="res://assets/images/balablanca.png" id="2_31lcc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dx8wa"]
 
-[node name="Area2D" type="Area2D"]
-script = ExtResource("1_argq8")
+[node name="Spell" type="Area2D"]
+script = ExtResource("1_0h40s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_ty31p")
+texture = ExtResource("2_31lcc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(2, 2)

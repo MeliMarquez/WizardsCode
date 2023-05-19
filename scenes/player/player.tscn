@@ -1,59 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://coqdm6r0xau1d"]
 
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kah1m"]
 [ext_resource type="PackedScene" uid="uid://cahlx31tahu88" path="res://scenes/pause/pause.tscn" id="2_j5522"]
 [ext_resource type="Texture2D" uid="uid://culqg6pyecuui" path="res://assets/images/AnimationSheet_Character.png" id="2_o2g3m"]
-
-[sub_resource type="GDScript" id="GDScript_l8mtm"]
-script/source = "extends CharacterBody2D
-
-@onready var ap = $AnimationPlayer;
-@onready var sprite = $Sprite2D;
-@onready var margin_container = $CanvasLayer2/MarginContainer
-
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-const GRAVITY = 1000
-
-
-func _physics_process(delta):
-	
-	# Si no esta en el piso
-	if not is_on_floor():
-		# Bajar
-		velocity.y += GRAVITY * delta 
-
-	# Si se apreta saltar y estoy en el piso
-	if Input.is_action_just_pressed(\"jump\") and is_on_floor():
-		# Subir
-		velocity.y = JUMP_VELOCITY
-	move_and_slide()
-	
-
-func _unhandled_input(_event):
-	# 1 -> mover a la derecha - 0 -> mover desde velocidad actual a 0
-	var direction = Input.get_axis(\"move_left\", \"move_right\")
-	if direction:
-		velocity.x = direction * SPEED
-		ap.play(\"walk\");
-		if direction < 0:
-			sprite.set_flip_h(true)
-		else:
-			sprite.set_flip_h(false)
-			
-			
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	if Input.is_action_just_released(\"move_right\") or Input.is_action_just_released(\"move_left\"):
-		ap.pause()
-		
-
-		
-		
-	
-	
-"
 
 [sub_resource type="GDScript" id="GDScript_vjqqv"]
 
@@ -112,7 +61,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2.5, 2.5)
-script = SubResource("GDScript_l8mtm")
+script = ExtResource("1_kah1m")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

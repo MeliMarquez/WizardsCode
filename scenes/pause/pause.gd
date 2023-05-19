@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var retry = %Retry
 @onready var main_menu = %MainMenu
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	hide()
 	resume.pressed.connect(_on_resume_pressed)	

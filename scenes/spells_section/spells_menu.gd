@@ -6,44 +6,81 @@ extends MarginContainer
 @onready var for_spell = %ForSpell
 
 @onready var edit_if = %EditIf
-@onready var edit_if_menu = $CanvasLayer/EditIfMenu
+@onready var edit_if_menu = %EditIfMenu
 
-var SPELL_TYPE = 0
-var SUBTYPE = 0
+@onready var edit_while = %EditWhile
+@onready var edit_while_menu = %EditWhileMenu
+
+@onready var edit_for = %EditFor
+@onready var edit_for_menu = %EditForMenu
+
+
+var spell_type = 0				# ALL SPELLS MANAGER: 	 0 Normal - 1 If - 2 While - 3 For
+var target_type = 0				# IF SPELL MANAGER:    	 0 Enemy - 1 Not enemy                 ##### 0 Enemy - 1 Enemy 2.0 - 2 Not enemy
+var damage = 1					# FOR SPELL MANAGER:   	 Amount of attack's damage
+var target_lock = 0				# WHILE SPELL MANAGER: 	 0 Amount of enemys - 1 Amount of life
 
 func _ready():
-	normal_spell.pressed.connect(_on_normal_spell_pressed)
-	if_spell.pressed.connect(_on_if_spell_pressed)
-	while_spell.pressed.connect(_on_while_spell_pressed)
-	for_spell.pressed.connect(_on_for_spell_pressed)
+	normal_spell.pressed.connect(_on_spell_pressed.bind(0))
+	if_spell.pressed.connect(_on_spell_pressed.bind(1))
+	while_spell.pressed.connect(_on_spell_pressed.bind(2))
+	for_spell.pressed.connect(_on_spell_pressed.bind(3))
 	
-	edit_if.pressed.connect(_on_edit_if_pressed)
+	edit_if.pressed.connect(_on_edit_pressed.bind(1))
+	edit_while.pressed.connect(_on_edit_pressed.bind(2))
+	edit_for.pressed.connect(_on_edit_pressed.bind(3))
 
+## ON BUTTONS PRESSED
+func _on_spell_pressed(spell_type_input):
+	self.spell_type = spell_type_input
+			
+func _on_edit_pressed(edition_type):
 	
-func _on_normal_spell_pressed():
-	self.SPELL_TYPE = 0
-	
-func _on_if_spell_pressed():
-	self.SPELL_TYPE = 1
-
-func _on_while_spell_pressed():
-	self.SPELL_TYPE = 2
-	
-func _on_for_spell_pressed():
-	self.SPELL_TYPE = 3
+	#IF EDITIOM MENU
+	if edition_type == 1:
+		edit_if_menu.show()
+		if_spell.grab_focus()
 		
-func get_spell_type():
-	return self.SPELL_TYPE
+	#WHILE EDITION MENU
+	elif edition_type == 2:
+		edit_while_menu.show()
+		while_spell.grab_focus()
+		
+	#FOR EDITION MENU
+	elif edition_type == 3:
+		edit_for_menu.show()
+		for_spell.grab_focus()
+		
+	_on_spell_pressed(edition_type)
+	get_tree().paused = true	
 	
+## SETERS	
+func set_target_type(type):
+	self.target_type = type
+	
+func set_damage(damage_input):
+	self.damage = damage_input
+	
+func set_target_lock(target):
+	self.target_lock = target
+	
+func set_focus(edition_type):
+	if edition_type == 1:
+		if_spell.grab_focus()
+	elif edition_type == 2:
+		while_spell.grab_focus()
+	elif edition_type == 3:
+		for_spell.grab_focus()
 
-func _on_edit_if_pressed():
-	edit_if_menu.show()
-	get_tree().paused = true
-	#################### ayuda pause tree y obtener subtipo
-	if not get_tree().paused:
-		self.SUBTYPE = edit_if_menu.get_subtype()
-		print("El subtipo es: ", self.SUBTYPE)
+## GETERS
+func get_target_type():
+	return self.target_type
 	
-func get_subtype():
-	return self.SUBTYPE
+func get_damage():
+	return self.damage
 	
+func get_spell_type():
+	return self.spell_type
+
+func get_target_lock():
+	return self.target_lock
