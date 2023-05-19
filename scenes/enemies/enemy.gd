@@ -21,7 +21,26 @@ func _physics_process(delta):
 	ap.play("fly")
 	move_and_slide()
 	
+func handle_combo(combo_number):#, target_type, damage, target_lock):
+
+	## WHILE SOBRE SALUD Y IF SOBRE ENEMIGOS
+	if combo_number == 0:
+		if self.sprite_type == 0:
+			handle_hit(2,0,1,1)
+			
+	## WHILE SOBRE SALUD Y IF SOBRE AMIGOS
+	elif combo_number == 1:
+		if self.sprite_type == 1:
+			handle_hit(2,1,1,1)
+			
+	## WHILE SOBRE HEALTH Y WHILE SOBRE ENEMIGOS
+	elif combo_number == 2:
+		handle_hit(2,self.sprite_type,1,1)
+		
+
+	
 func handle_hit(spell_type, target_type, damage, target_lock):
+	
 	# Normal Spell
 	if spell_type == 0:
 		health_decrease()
@@ -43,6 +62,7 @@ func handle_hit(spell_type, target_type, damage, target_lock):
 	elif spell_type == 3:
 		for i in range(damage):
 			health_decrease()
+			
 
 func health_decrease():
 	self.health = self.health-1

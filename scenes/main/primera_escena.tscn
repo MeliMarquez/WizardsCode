@@ -31,11 +31,11 @@ position = Vector2(648, 220)
 position = Vector2(746, 201)
 sprite_type = 1
 
-[node name="Menu" type="CanvasLayer" parent="."]
+[node name="Menu Spells" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
-[node name="SpellsMenu" parent="Menu" instance=ExtResource("4_qjoos")]
+[node name="SpellsMenu" parent="Menu Spells" instance=ExtResource("4_qjoos")]
 offset_left = 11.0
 offset_top = 504.0
-offset_right = 795.0
+offset_right = 1153.0
 offset_bottom = 630.0

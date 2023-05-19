@@ -5,6 +5,11 @@ extends MarginContainer
 @onready var while_spell = %WhileSpell
 @onready var for_spell = %ForSpell
 
+@onready var combo_1 = %Combo1
+@onready var combo_2 = %Combo2
+@onready var combo_3 = %Combo3
+
+
 @onready var edit_if = %EditIf
 @onready var edit_if_menu = %EditIfMenu
 
@@ -20,11 +25,18 @@ var target_type = 0				# IF SPELL MANAGER:    	 0 Enemy - 1 Not enemy           
 var damage = 1					# FOR SPELL MANAGER:   	 Amount of attack's damage
 var target_lock = 0				# WHILE SPELL MANAGER: 	 0 Amount of enemys - 1 Amount of life
 
+var combo = false
+var combo_number = 0
+
 func _ready():
 	normal_spell.pressed.connect(_on_spell_pressed.bind(0))
 	if_spell.pressed.connect(_on_spell_pressed.bind(1))
 	while_spell.pressed.connect(_on_spell_pressed.bind(2))
 	for_spell.pressed.connect(_on_spell_pressed.bind(3))
+	
+	combo_1.pressed.connect(_on_combo_pressed.bind(0))	
+	combo_2.pressed.connect(_on_combo_pressed.bind(1))	
+	combo_3.pressed.connect(_on_combo_pressed.bind(2))
 	
 	edit_if.pressed.connect(_on_edit_pressed.bind(1))
 	edit_while.pressed.connect(_on_edit_pressed.bind(2))
@@ -32,7 +44,12 @@ func _ready():
 
 ## ON BUTTONS PRESSED
 func _on_spell_pressed(spell_type_input):
-	self.spell_type = spell_type_input
+	set_combo(false)
+	set_type(spell_type_input)
+
+func _on_combo_pressed(combo_number_input):
+	set_combo(true)
+	set_combo_number(combo_number_input)
 			
 func _on_edit_pressed(edition_type):
 	
@@ -55,6 +72,9 @@ func _on_edit_pressed(edition_type):
 	get_tree().paused = true	
 	
 ## SETERS	
+func set_type(type):
+	self.spell_type = type
+
 func set_target_type(type):
 	self.target_type = type
 	
@@ -71,6 +91,12 @@ func set_focus(edition_type):
 		while_spell.grab_focus()
 	elif edition_type == 3:
 		for_spell.grab_focus()
+		
+func set_combo(combo_bool):
+	self.combo = combo_bool
+
+func set_combo_number(number):
+	self.combo_number = number
 
 ## GETERS
 func get_target_type():
@@ -84,3 +110,9 @@ func get_spell_type():
 
 func get_target_lock():
 	return self.target_lock
+
+func get_combo():
+	return self.combo
+
+func get_combo_number():
+	return self.combo_number

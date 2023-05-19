@@ -48,16 +48,27 @@ func _unhandled_input(_event):
 		var s_target_type = spells_menu_instance.get_target_type()
 		var s_damage = spells_menu_instance.get_damage()
 		var s_type_lock = spells_menu_instance.get_target_lock()
-		throw_spell(s_type,s_target_type,s_damage,s_type_lock)
 		
-func throw_spell(spell_type, target_type, damage, target_lock):
+		var s_combo = spells_menu_instance.get_combo()
+		var s_combo_number = spells_menu_instance.get_combo_number()
+		
+		throw_spell(s_type,s_target_type,s_damage,s_type_lock,s_combo,s_combo_number)
+		
+		
+func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_number):
 	var spell_instance = spell.instantiate()
 	get_parent().add_child(spell_instance)
 	
 	spell_instance.set_position(global_position)
 	if sprite.is_flipped_h() == true:
 		spell_instance.set_direction(-1)
-	spell_instance.set_type(spell_type)
-	spell_instance.set_target_type(target_type)
-	spell_instance.set_damage(damage)
-	spell_instance.set_target_lock(target_lock)
+		
+	if not combo:
+		spell_instance.set_type(spell_type)
+		spell_instance.set_target_type(target_type)
+		spell_instance.set_damage(damage)
+		spell_instance.set_target_lock(target_lock)
+		
+	else: 
+		spell_instance.set_combo(true)
+		spell_instance.set_combo_number(combo_number)
