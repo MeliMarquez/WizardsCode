@@ -1,8 +1,13 @@
+class_name Enemy
 extends CharacterBody2D
 
-@onready var ap = $AnimationPlayer;
+enum TYPE {FRIEND, ENEMY}
+
 @onready var cs = $CollisionShape2D
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
+@onready var ap = $AnimatedSprite2D/AnimationPlayer
+@onready var animation_tree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
 
 @export var health = 3
 @export var sprite_type = 0
@@ -11,14 +16,14 @@ const GRAVITY = 1000
 
 
 func _ready():
+	animation_tree.active = true
+	playback.travel("idle_purple_bat");
 	if self.sprite_type == 0:
 		self.set_modulate(Color(1,0,0))
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta 
-		
-	ap.play("fly")
 	move_and_slide()
 	
 func handle_combo(combo_number):#, target_type, damage, target_lock):
