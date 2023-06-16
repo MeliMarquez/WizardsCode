@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://3ah8370nwr2d"]
+
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_307t7"]
+
+[resource]
+Button/colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+Button/colors/font_hover_color = Color(1, 0.843137, 0, 1)
+Button/font_sizes/font_size = 80
+Button/fonts/font = ExtResource("1_307t7")
+Label/colors/font_color = Color(0.752941, 0.752941, 0.752941, 1)
+Label/font_sizes/font_size = 117
+Label/fonts/font = ExtResource("1_307t7")
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 20
+MarginContainer/constants/margin_right = 20
+MarginContainer/constants/margin_top = 20

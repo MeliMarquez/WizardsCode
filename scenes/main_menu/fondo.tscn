@@ -1,11 +1,20 @@
-[gd_scene format=3 uid="uid://chlqlldhchkff"]
+[gd_scene load_steps=3 format=3 uid="uid://chlqlldhchkff"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/ParallaxBackground.gd" id="1_5ngw3"]
+[ext_resource type="Texture2D" uid="uid://bg3byfprlbcvm" path="res://assets/images/cielo-estrellado.jpg" id="2_ej5ig"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_5ngw3")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(3000, 3000)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(196, 195)
+texture_repeat = 3
+position = Vector2(4500, 4500)
 scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ej5ig")
+region_enabled = true
+region_rect = Rect2(0, 0, 30000, 30000)

@@ -22,9 +22,10 @@ func _on_body_entered(body):
 	if body.get_name() != "Player":
 		if not combo:
 			body.handle_hit(self.type, self.target_type, self.damage, self.target_lock)
-			if not (self.type == 2 and self.target_lock == 0):
+			if self.target_lock == 1:
 				queue_free()
 		else:
+			#body.handle_hit(self.type, self.target_type, self.damage, self.target_lock)
 			body.handle_combo(self.combo_number)#, self.target_type, self.damage, self.target_lock)
 			if self.combo_number != 2:
 				queue_free()

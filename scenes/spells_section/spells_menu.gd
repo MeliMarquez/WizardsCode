@@ -23,7 +23,7 @@ extends MarginContainer
 var spell_type = 0				# ALL SPELLS MANAGER: 	 0 Normal - 1 If - 2 While - 3 For
 var target_type = 0				# IF SPELL MANAGER:    	 0 Enemy - 1 Not enemy                 ##### 0 Enemy - 1 Enemy 2.0 - 2 Not enemy
 var damage = 1					# FOR SPELL MANAGER:   	 Amount of attack's damage
-var target_lock = 0				# WHILE SPELL MANAGER: 	 0 Amount of enemys - 1 Amount of life
+var target_lock = 1			# WHILE SPELL MANAGER: 	 0 Amount of enemys - 1 Amount of life
 
 var combo = false
 var combo_number = 0
@@ -46,6 +46,9 @@ func _ready():
 func _on_spell_pressed(spell_type_input):
 	set_combo(false)
 	set_type(spell_type_input)
+	set_target_type(0)
+	set_damage(1)
+	set_target_lock(1)
 
 func _on_combo_pressed(combo_number_input):
 	set_combo(true)
