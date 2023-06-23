@@ -10,17 +10,22 @@
 [node name="GameConstants" parent="." instance=ExtResource("1_46p4o")]
 
 [node name="Player Goopert" parent="." instance=ExtResource("2_q7v2y")]
+position = Vector2(82, 63)
 
 [node name="Enemy" parent="." instance=ExtResource("6_m388q")]
-position = Vector2(648, 220)
+position = Vector2(648, 430)
+sprite_type = 1
 
 [node name="Enemy2" parent="." instance=ExtResource("6_m388q")]
-position = Vector2(746, 201)
-sprite_type = 1
+position = Vector2(1000, 430)
+sprite_type = 2
+
+[node name="Enemy3" parent="." instance=ExtResource("6_m388q")]
+position = Vector2(833, 430)
+sprite_type = 3
 
 [node name="Menu Spells" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
-visible = false
 
 [node name="SpellsMenu" parent="Menu Spells" instance=ExtResource("4_qjoos")]
 offset_left = 11.0

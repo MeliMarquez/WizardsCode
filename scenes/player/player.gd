@@ -1,26 +1,21 @@
 extends CharacterBody2D
 
-@onready var ap = $AnimatedSprite2D/AnimationPlayer
+@onready var animation = $AnimatedSprite2D/AnimationPlayer
 @onready var sprite = $AnimatedSprite2D
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
-
-var spell = preload("res://scenes/spells/spell.tscn")
-var spell_menu = preload("res://scenes/spells_section/spells_menu.tscn")
+@onready var spells_menu_instance = get_tree().get_first_node_in_group("spells_menu_group")
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 
-var spells_menu_instance
-
+var spell = preload("res://scenes/spells/spell.tscn")
 var magic_points = 100
 
 func _ready():
 	animation_tree.active = true
 	set_name("Player")
-	spells_menu_instance = get_tree().get_first_node_in_group("spells_menu_group")
-	#sprite.play("idle")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -28,7 +23,6 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		#ap.play("jump")
 		playback.travel("jump")
 		
 	move_and_slide()	
@@ -46,9 +40,6 @@ func _unhandled_input(_event):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		playback.travel("idle");
-
-	if Input.is_action_just_released("move_right") or Input.is_action_just_released("move_left"):
-		ap.pause()
 	
 	## SPELLS
 	if Input.is_action_just_pressed("spell"):
@@ -59,6 +50,7 @@ func _unhandled_input(_event):
 		
 		var s_combo = spells_menu_instance.get_combo()
 		var s_combo_number = spells_menu_instance.get_combo_number()
+		
 		
 		throw_spell(s_type,s_target_type,s_damage,s_type_lock,s_combo,s_combo_number)
 		decrease_magic_points()
