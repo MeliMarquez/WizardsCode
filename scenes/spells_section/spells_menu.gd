@@ -10,10 +10,12 @@ extends MarginContainer
 @onready var combo_3 = $Spells/VBoxContainer/HBoxContainer/Combo3
 
 @onready var edit_if_menu = %EditIfMenu
-
 @onready var edit_while_menu = %EditWhileMenu
-
 @onready var edit_for_menu = %EditForMenu
+
+@onready var book = $Spells/VBoxContainer/HBoxContainer/Book
+@onready var v_separator = $Spells/VBoxContainer/HBoxContainer/VSeparator
+@onready var v_separator_2 = $Spells/VBoxContainer/HBoxContainer/VSeparator2
 
 
 var spell_type = 0				# ALL SPELLS MANAGER: 	 0 Normal - 1 If - 2 While - 3 For
@@ -24,7 +26,13 @@ var target_lock = 1			# WHILE SPELL MANAGER: 	 0 Amount of enemys - 1 Amount of 
 var combo = false
 var combo_number = 0
 
+var show_spells = false
+
 func _ready():
+	
+	_on_book_pressed()
+	
+	
 	normal_spell.pressed.connect(_on_spell_pressed.bind(0))
 	if_spell.pressed.connect(_on_spell_pressed.bind(1))
 	while_spell.pressed.connect(_on_spell_pressed.bind(2))
@@ -33,10 +41,13 @@ func _ready():
 	combo_1.pressed.connect(_on_combo_pressed.bind(0))	
 	combo_2.pressed.connect(_on_combo_pressed.bind(1))	
 	combo_3.pressed.connect(_on_combo_pressed.bind(2))
+	
+	#book.pressed.connect(_on_book_pressed)
 
 
 ## ON BUTTONS PRESSED
 func _on_spell_pressed(spell_type_input):
+	print("presionando...",spell_type_input)
 	_on_edit_pressed(spell_type_input)
 	set_combo(false)
 	set_type(spell_type_input)
@@ -50,8 +61,11 @@ func _on_combo_pressed(combo_number_input):
 			
 func _on_edit_pressed(edition_type):
 	
+	if edition_type == 0:
+		return
+	
 	#IF EDITIOM MENU
-	if edition_type == 1:
+	elif edition_type == 1:
 		edit_if_menu.show()
 		if_spell.grab_focus()
 		
@@ -112,3 +126,32 @@ func get_combo():
 
 func get_combo_number():
 	return self.combo_number
+
+func _on_book_pressed():
+	if self.show_spells:
+		v_separator.show()
+		normal_spell.show()
+		if_spell.show()
+		for_spell.show()
+		while_spell.show()
+		
+		if combo:
+			v_separator_2.show()
+			combo_1.show()
+			combo_2.show()
+			combo_3.show()
+			
+		self.show_spells = false
+	else:
+		v_separator.hide()
+		normal_spell.hide()
+		if_spell.hide()
+		for_spell.hide()
+		while_spell.hide()
+		
+		v_separator_2.hide()
+		combo_1.hide()
+		combo_2.hide()
+		combo_3.hide()
+		
+		self.show_spells = true

@@ -10,13 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Memoria"
+config/name="Wizard's Code"
 run/main_scene="res://scenes/main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
+window/size/resizable=false
 window/stretch/aspect="expand"
 
 [input]

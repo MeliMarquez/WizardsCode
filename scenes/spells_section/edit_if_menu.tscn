@@ -33,18 +33,26 @@ theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 60
 text = "Atacar a"
 
-[node name="Enemy" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BatPurple" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 50
-text = "Enemigos"
+text = "Purple Bat"
 
-[node name="Friend" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Goblyn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 50
-text = "Amigos"
+text = "Goblyn"
+
+[node name="BatBlue" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qv2dt")
+theme_override_font_sizes/font_size = 50
+text = "Blue Bat"

@@ -1,13 +1,16 @@
 extends MarginContainer
 
-@onready var enemy = %Enemy
-@onready var friend = %Friend
+@onready var bat_purple = %BatPurple
+@onready var goblyn = %Goblyn
+@onready var bat_blue = %BatBlue
+
 @onready var spells_menu = get_tree().get_first_node_in_group("spells_menu_group")
 
 func _ready():
 	hide()
-	enemy.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.PURPLE_BAT_ENEMY))	
-	friend.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.FRIEND))
+	bat_purple.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.PURPLE_BAT_ENEMY))	
+	goblyn.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.GOBLYN_ENEMY))	
+	bat_blue.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.BLUE_BAT_ENEMY))
 
 func open_edition():
 	show()

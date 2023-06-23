@@ -58,28 +58,33 @@ func handle_hit(spell_type, target_type: Sprites.TYPE , damage, target_lock):
 	# Normal Spell
 	if spell_type == 0:
 		health_decrease(1)
+		print("punch")
 		return true
 		
 	# If Spell
 	elif spell_type == 1:
 		if target_type == self.sprite_type:
 			health_decrease(1)
+			print("tajo")
 			return true
 		
 	# WHILE Spell
 	elif spell_type == 2:
 		if target_lock == 0:
 			health_decrease(1)
+			print("punch")
 		elif target_lock == 1:
 			while self.health >= 1:
 				health_decrease(1)
+				print("circle")
 			return true
 			
 	# FOR Spell
 	elif spell_type == 3:
 		for i in range(damage):
 			health_decrease(1)
-			return true
+			print("circle")
+		return true
 			
 	return false
 			
