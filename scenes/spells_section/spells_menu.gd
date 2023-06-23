@@ -5,18 +5,14 @@ extends MarginContainer
 @onready var while_spell = %WhileSpell
 @onready var for_spell = %ForSpell
 
-@onready var combo_1 = %Combo1
-@onready var combo_2 = %Combo2
-@onready var combo_3 = %Combo3
+@onready var combo_1 = $Spells/VBoxContainer/HBoxContainer/Combo1
+@onready var combo_2 = $Spells/VBoxContainer/HBoxContainer/Combo2
+@onready var combo_3 = $Spells/VBoxContainer/HBoxContainer/Combo3
 
-
-@onready var edit_if = %EditIf
 @onready var edit_if_menu = %EditIfMenu
 
-@onready var edit_while = %EditWhile
 @onready var edit_while_menu = %EditWhileMenu
 
-@onready var edit_for = %EditFor
 @onready var edit_for_menu = %EditForMenu
 
 
@@ -37,13 +33,11 @@ func _ready():
 	combo_1.pressed.connect(_on_combo_pressed.bind(0))	
 	combo_2.pressed.connect(_on_combo_pressed.bind(1))	
 	combo_3.pressed.connect(_on_combo_pressed.bind(2))
-	
-	edit_if.pressed.connect(_on_edit_pressed.bind(1))
-	edit_while.pressed.connect(_on_edit_pressed.bind(2))
-	edit_for.pressed.connect(_on_edit_pressed.bind(3))
+
 
 ## ON BUTTONS PRESSED
 func _on_spell_pressed(spell_type_input):
+	_on_edit_pressed(spell_type_input)
 	set_combo(false)
 	set_type(spell_type_input)
 	set_target_type(Sprites.TYPE.PURPLE_BAT_ENEMY)
@@ -71,7 +65,6 @@ func _on_edit_pressed(edition_type):
 		edit_for_menu.show()
 		for_spell.grab_focus()
 		
-	_on_spell_pressed(edition_type)
 	get_tree().paused = true	
 	
 ## SETERS	

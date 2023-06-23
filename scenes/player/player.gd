@@ -5,17 +5,20 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var spells_menu_instance = get_tree().get_first_node_in_group("spells_menu_group")
+@onready var magic_points_label = $CanvasLayer2/MagicPoints
+@onready var lose_level = $CanvasLayer/LoseLevel
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const GRAVITY = 1000
 
 var spell = preload("res://scenes/spells/spell.tscn")
-var magic_points = 100
+var magic_points = 10
 
 func _ready():
 	animation_tree.active = true
 	set_name("Player")
+	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -78,6 +81,11 @@ func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_numb
 		
 func decrease_magic_points():
 	self.magic_points-=1
+	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
+	if self.magic_points <= 0:
+		print("Te has quedado sin magia")
+		lose_level.lose_level()
+	
 	
 func set_spell_values_from_spells_mixer(combo_number, spell_instance):
 	## POR AHORA CON VALORES

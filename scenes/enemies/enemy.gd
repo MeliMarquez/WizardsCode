@@ -3,12 +3,17 @@ extends CharacterBody2D
 
 enum TYPE {FRIEND, PURPLE_BAT_ENEMY, BLUE_BAT_ENEMY, GOBLYN_ENEMY}
 
-@onready var health_label = $Health
 @onready var cs = $CollisionShape2D
 @onready var sprite = $AnimatedSprite2D
 @onready var ap = $AnimatedSprite2D/AnimationPlayer
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
+
+@onready var health_label = $Health
+
+@onready var hearth1 = $Sprite2D2
+@onready var hearth2 = $Sprite2D3
+@onready var hearth3 = $Sprite2D4
 
 @export var health = 3
 @export var sprite_type: TYPE
@@ -88,7 +93,18 @@ func health_decrease(damage):
 		TYPE.GOBLYN_ENEMY:
 			playback.travel("hit_goblyn")
 	self.health = self.health-damage
+	
+	#way 1
 	self.health_label.set_text(str(self.health))
+	
+	#way 2
+	if hearth2.is_visible_in_tree():
+		hearth2.hide()
+	elif hearth1.is_visible_in_tree():
+		hearth1.hide()
+	else: 
+		hearth3.hide()
+		
 	if self.health == 0:
 		handle_dead()
 		

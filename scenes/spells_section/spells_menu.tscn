@@ -1,10 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cygke7njggw7b"]
+[gd_scene load_steps=7 format=3 uid="uid://cygke7njggw7b"]
 
 [ext_resource type="Script" path="res://scenes/spells_section/spells_menu.gd" id="1_jrmhn"]
-[ext_resource type="Texture2D" uid="uid://b71mcpefh1qhp" path="res://assets/images/edit_white.png" id="2_gn6g5"]
-[ext_resource type="Texture2D" uid="uid://6lvrvyosa735" path="res://assets/images/edit_gray.png" id="3_3mplg"]
-[ext_resource type="Texture2D" uid="uid://d1bx75plyf8r7" path="res://assets/images/edit_select.png" id="3_erjew"]
-[ext_resource type="Texture2D" uid="uid://mnpt3y2ctiav" path="res://assets/images/edit_pressed.png" id="5_6mt12"]
+[ext_resource type="Texture2D" uid="uid://c78a86dhsufps" path="res://assets/images/spells/book1.png" id="2_p5sju"]
 [ext_resource type="PackedScene" uid="uid://b2l3pdm5jnp54" path="res://scenes/spells_section/edit_if_menu.tscn" id="6_usign"]
 [ext_resource type="PackedScene" uid="uid://dsxntoqrvrdwc" path="res://scenes/spells_section/edit_for_menu.tscn" id="7_dbct7"]
 [ext_resource type="PackedScene" uid="uid://bi4vdvord4m5j" path="res://scenes/spells_section/edit_while_menu.tscn" id="8_dyw34"]
@@ -20,132 +17,121 @@ offset_right = 1152.0
 offset_bottom = 126.0
 script = ExtResource("1_jrmhn")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Spells" type="PanelContainer" parent="."]
 layout_mode = 2
 script = SubResource("GDScript_wxq2g")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Spells"]
 process_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Spells/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "HECHIZOS"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Spells/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Book" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+button_mask = 0
+texture_normal = ExtResource("2_p5sju")
+
+[node name="VSeparator" type="VSeparator" parent="Spells/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="NormalSpell" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="NormalSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "NORMAL SPELL"
 
-[node name="IfSpell" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="IfSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "IF SPELL    "
+text = "IF SPELL"
 
-[node name="EditIf" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/IfSpell"]
-unique_name_in_owner = true
-layout_mode = 2
-offset_left = 130.0
-offset_top = 10.0
-offset_right = 355.0
-offset_bottom = 235.0
-scale = Vector2(0.08, 0.08)
-texture_normal = ExtResource("2_gn6g5")
-texture_pressed = ExtResource("3_erjew")
-texture_hover = ExtResource("3_3mplg")
-texture_focused = ExtResource("5_6mt12")
-
-[node name="WhileSpell" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="WhileSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "WHILE SPELL    "
+text = "WHILE SPELL"
 
-[node name="EditWhile" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/WhileSpell"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 200.0
-offset_top = 10.0
-offset_right = 425.0
-offset_bottom = 235.0
-scale = Vector2(0.08, 0.08)
-texture_normal = ExtResource("2_gn6g5")
-texture_pressed = ExtResource("3_erjew")
-texture_hover = ExtResource("3_3mplg")
-texture_focused = ExtResource("5_6mt12")
-
-[node name="ForSpell" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="ForSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "FOR SPELL    "
+text = "FOR SPELL"
 
-[node name="EditFor" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer/ForSpell"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 170.0
-offset_top = 10.0
-offset_right = 490.0
-offset_bottom = 330.0
-scale = Vector2(0.08, 0.08)
-texture_normal = ExtResource("2_gn6g5")
-texture_pressed = ExtResource("3_erjew")
-texture_hover = ExtResource("3_3mplg")
-texture_focused = ExtResource("5_6mt12")
+[node name="VSeparator2" type="VSeparator" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="."]
+[node name="Combo1" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "C1"
+
+[node name="Combo2" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "C2"
+
+[node name="Combo3" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "C3"
+
+[node name="Combos" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Combos"]
 process_mode = 1
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer"]
+[node name="Label" type="Label" parent="Combos/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "COMBOS"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Combos/VBoxContainer"]
 layout_mode = 2
 
-[node name="Combo1" type="Button" parent="PanelContainer2/VBoxContainer/HBoxContainer"]
+[node name="Combo1" type="Button" parent="Combos/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "C1"
 
-[node name="Combo2" type="Button" parent="PanelContainer2/VBoxContainer/HBoxContainer"]
+[node name="Combo2" type="Button" parent="Combos/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "C2"
 
-[node name="Combo3" type="Button" parent="PanelContainer2/VBoxContainer/HBoxContainer"]
+[node name="Combo3" type="Button" parent="Combos/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "C3"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="EditIfMenu" type="CanvasLayer" parent="."]
 
-[node name="EditIfMenu" parent="CanvasLayer" instance=ExtResource("6_usign")]
+[node name="EditIfMenu" parent="EditIfMenu" instance=ExtResource("6_usign")]
 unique_name_in_owner = true
 process_mode = 3
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="EditForMenu" type="CanvasLayer" parent="."]
 
-[node name="EditForMenu" parent="CanvasLayer2" instance=ExtResource("7_dbct7")]
+[node name="EditForMenu" parent="EditForMenu" instance=ExtResource("7_dbct7")]
 unique_name_in_owner = true
 
-[node name="CanvasLayer3" type="CanvasLayer" parent="."]
+[node name="EditWhileMenu" type="CanvasLayer" parent="."]
 
-[node name="EditWhileMenu" parent="CanvasLayer3" instance=ExtResource("8_dyw34")]
+[node name="EditWhileMenu" parent="EditWhileMenu" instance=ExtResource("8_dyw34")]
 unique_name_in_owner = true
-visible = false
