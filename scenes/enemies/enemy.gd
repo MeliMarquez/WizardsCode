@@ -9,23 +9,23 @@ enum TYPE {FRIEND, PURPLE_BAT_ENEMY, BLUE_BAT_ENEMY, GOBLYN_ENEMY}
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 
-@onready var health_label = $Health
-
 @onready var hearth1 = $Sprite2D2
 @onready var hearth2 = $Sprite2D3
 @onready var hearth3 = $Sprite2D4
 
 @onready var control_levels = get_tree().get_first_node_in_group("control")
 
-@export var health = 3
+@export var health: int
 @export var sprite_type: TYPE
 
 const GRAVITY = 1000
 
 func _ready():	
 	animation_tree.active = true
-	self.health_label.set_text(str(self.health))
 	add_to_level()
+	if health == 1:
+		hearth2.hide()
+		hearth3.hide()
 	match sprite_type:
 		TYPE.PURPLE_BAT_ENEMY: 
 			playback.travel("idle_purple_bat")
@@ -104,9 +104,6 @@ func health_decrease(damage):
 		TYPE.GOBLYN_ENEMY:
 			playback.travel("hit_goblyn")
 	self.health = self.health-damage
-	
-	#way 1
-	self.health_label.set_text(str(self.health))
 	
 	#way 2
 	if hearth2.is_visible_in_tree():

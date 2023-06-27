@@ -1,9 +1,10 @@
-[gd_scene load_steps=40 format=3 uid="uid://csyqq0g17i1qf"]
+[gd_scene load_steps=41 format=3 uid="uid://csyqq0g17i1qf"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kah1m"]
 [ext_resource type="Texture2D" uid="uid://30kvu1l2qnw7" path="res://assets/images/player_violet.png" id="2_ao1b1"]
 [ext_resource type="PackedScene" uid="uid://b0hpyaqv560mw" path="res://scenes/menus/menus.tscn" id="3_wfy52"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="4_svlgs"]
+[ext_resource type="Texture2D" uid="uid://bnygp4iccwbtv" path="res://assets/UI/assets/Bar_layer1.png" id="6_7qfrr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2sb3f"]
 atlas = ExtResource("2_ao1b1")
@@ -286,7 +287,6 @@ script = ExtResource("1_kah1m")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7r7en")
 animation = &"idle"
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -305,12 +305,36 @@ shape = SubResource("CapsuleShape2D_csei5")
 
 [node name="Menus" parent="." instance=ExtResource("3_wfy52")]
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="Resources" type="CanvasLayer" parent="."]
 
-[node name="MagicPoints" type="Label" parent="CanvasLayer2"]
-offset_right = 74.0
-offset_bottom = 26.0
-scale = Vector2(2, 2)
+[node name="Sprite2D2" type="Sprite2D" parent="Resources"]
+position = Vector2(78, 24)
+scale = Vector2(0.5, 0.625)
+texture = ExtResource("6_7qfrr")
+
+[node name="Level" type="Label" parent="Resources"]
+offset_left = 32.0
+offset_top = 5.0
+offset_right = 112.0
+offset_bottom = 31.0
+scale = Vector2(1.8, 1.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_svlgs")
+theme_override_font_sizes/font_size = 16
+text = "Level: 0"
+
+[node name="Sprite2D3" type="Sprite2D" parent="Resources"]
+position = Vector2(260, 24)
+scale = Vector2(0.75, 0.625)
+texture = ExtResource("6_7qfrr")
+
+[node name="MagicPoints" type="Label" parent="Resources"]
+offset_left = 162.0
+offset_top = 5.0
+offset_right = 264.0
+offset_bottom = 25.0
+scale = Vector2(1.8, 1.8)
 theme_override_colors/font_color = Color(0.0666667, 0.0666667, 0.0666667, 1)
 theme_override_fonts/font = ExtResource("4_svlgs")
+theme_override_font_sizes/font_size = 16
 text = " Magic Points: 10"

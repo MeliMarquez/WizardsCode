@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://3y5jumlxi0mi"]
+[gd_scene load_steps=10 format=3 uid="uid://3y5jumlxi0mi"]
 
 [ext_resource type="Texture2D" uid="uid://6wiqqcfhay6" path="res://assets/images/background.png" id="1_5c6md"]
 [ext_resource type="Texture2D" uid="uid://b0v448ricledg" path="res://assets/images/Tiles-and-Some-Props.png" id="2_e8550"]
 [ext_resource type="Script" path="res://scenes/background/Walls.gd" id="4_bmsfa"]
+[ext_resource type="Texture2D" uid="uid://771rwmo7o6hi" path="res://assets/images/tutorial.png" id="4_w2fbk"]
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="5_bf28k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6rs2s"]
 size = Vector2(1311, 174)
@@ -405,6 +407,22 @@ sources/0 = SubResource("TileSetAtlasSource_espds")
 size = Vector2(133, 665)
 
 [node name="FondoJuego" type="Node2D"]
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tutorial"]
+position = Vector2(576, 200)
+scale = Vector2(2, 1)
+texture = ExtResource("4_w2fbk")
+
+[node name="Label" type="Label" parent="Tutorial"]
+offset_left = 348.0
+offset_top = 100.0
+offset_right = 600.0
+offset_bottom = 196.0
+scale = Vector2(2, 2)
+size_flags_horizontal = 5
+theme_override_fonts/font = ExtResource("5_bf28k")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

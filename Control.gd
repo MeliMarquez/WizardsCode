@@ -4,6 +4,8 @@ extends Control
 const levels = [
 	"res://scenes/levels/level0/level0.tscn",
 	"res://scenes/levels/level1/level1.tscn",
+	"res://scenes/levels/level2/level2.tscn",
+	"res://scenes/levels/level3/level3.tscn"
 ]
 
 @onready var main_menu = preload("res://scenes/main_menu/main_menu.tscn")
@@ -48,8 +50,9 @@ func initiate_level(main):
 		self.enemies = 0
 		level = load(levels[actual_level])
 		level_instance = level.instantiate()
-		get_parent().add_child.call_deferred(level_instance)	
+		get_parent().add_child(level_instance)	
 		player = level_instance.get_node("Player")
+		player.set_level(actual_level)
 	else:
 		main_menu_instance.show()
 		main_menu_instance.get_node("Node2D/ParallaxBackground").show_parallax()

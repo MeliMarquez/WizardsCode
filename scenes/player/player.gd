@@ -5,10 +5,11 @@ extends CharacterBody2D
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var spells_menu = preload("res://scenes/spells_section/spells_menu.tscn")
-@onready var magic_points_label = $CanvasLayer2/MagicPoints
+@onready var magic_points_label = $Resources/MagicPoints
 @onready var lose_level = $Menus/LoseLevel
 @onready var next_level = $Menus/NextLevel
 @onready var win_game = $Menus/Victory
+@onready var level_label = $Resources/Level
 
 
 const SPEED = 300.0
@@ -23,15 +24,11 @@ var actual_level = 0
 
 
 func _ready():
-	print("new player")
 	spells_menu_instance = get_parent().get_node("Menu Spells/SpellsMenu")
-	#spells_menu_instance = spells_menu.instantiate()
-	#get_parent().get_node("Menu Spells").add_child(spells_menu_instance)
-	#spells_menu_instance.set_position(Vector2(11,504))
-	#spells_menu_instance.set_size(Vector2(1142,126))
 	animation_tree.active = true
 	set_name("Player")
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
+	self.level_label.set_text("Level: 0")
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -45,6 +42,9 @@ func _physics_process(delta):
 
 func go_to_next_level():
 	next_level.next_level()
+
+func set_level(lvl):
+	self.level_label.set_text("Level: "+str(lvl))
 
 func _unhandled_input(_event):
 	## MOVEMENT

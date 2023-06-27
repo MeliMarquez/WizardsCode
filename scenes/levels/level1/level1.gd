@@ -1,18 +1,12 @@
-class_name Level
-extends Node2D
+extends "res://scenes/levels/level0/level0.gd"
 
-@onready var player = $"Player"
-
-var enemies = 0
-var next_level = "res://scenes/levels/levelx/levelx.tscn"
+func set_text():
+	label_text = "Amazing!
+	In this world, you have limited magic!
+	Look above! Those are the actual level 
+	and your MAGIC POINTS!\n
+	Use them wisely"
 	
-
-func add_enemie():
-	self.enemies+=1
+func hide_elements():
+	spells_menu.hide()
 	
-func _process(_delta):	
-	if self.enemies == 0:
-		player.go_to_next_level()
-
-func delete_enemie():
-	self.enemies-=1
