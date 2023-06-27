@@ -1,16 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi4vdvord4m5j"]
+[gd_scene load_steps=3 format=3 uid="uid://cnag7kka4fwcj"]
 
-[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_vvjhj"]
-[ext_resource type="Script" path="res://scenes/spells_section/edit_while_menu.gd" id="1_wagq8"]
+[ext_resource type="Script" path="res://scenes/menus/lose_level/lose_level.gd" id="1_iafk5"]
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="2_p4voe"]
 
-[node name="EditWhileMenu" type="MarginContainer"]
-process_mode = 3
+[node name="MarginContainer" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wagq8")
+script = ExtResource("1_iafk5")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -26,27 +25,26 @@ theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_vvjhj")
+theme_override_fonts/font = ExtResource("2_p4voe")
 theme_override_font_sizes/font_size = 60
-text = "Iterate over"
+text = "You lose!"
 
-[node name="Enemies" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_vvjhj")
+theme_override_fonts/font = ExtResource("2_p4voe")
 theme_override_font_sizes/font_size = 50
-text = "Enemies"
+text = "Retry"
 
-[node name="Health" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_vvjhj")
+theme_override_fonts/font = ExtResource("2_p4voe")
 theme_override_font_sizes/font_size = 50
-text = "Health"
+text = "Main Menu"

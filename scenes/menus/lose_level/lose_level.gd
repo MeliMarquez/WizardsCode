@@ -3,6 +3,7 @@ extends MarginContainer
 @onready var retry = %Retry
 @onready var main_menu = %MainMenu
 
+@onready var control_levels = get_tree().get_first_node_in_group("control")
 
 func _ready():
 	hide()
@@ -16,8 +17,8 @@ func lose_level():
 func _on_retry_pressed():
 	hide()
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	control_levels.initiate_level("")
 	
 func _on_main_menu_pressed():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+	control_levels.initiate_level("main")

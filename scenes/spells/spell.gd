@@ -15,10 +15,10 @@ var combo = false				# COMBOS OMG
 var combo_number = 0
 
 func _ready():
+	set_name("Spell")
 	var verde = Color8(0,1,0)
 	var rojo = Color8(1,0,0)
 	var azul = Color8(0,0,1)
-	print(type)
 	if type == 1:
 		set_color(verde)
 	elif type == 2:
@@ -46,11 +46,12 @@ func _on_body_entered(body):
 		else:
 			#body.handle_hit(self.type, self.target_type, self.damage, self.target_lock)
 			body.handle_combo(self.combo_number)#, self.target_type, self.damage, self.target_lock)
-			if self.combo_number != 2:
+			if self.cxombo_number != 2:
 				queue_free()
 			
 			
 ## SETERS
+
 func set_direction(direction_input):
 	self.direction = direction_input
 	

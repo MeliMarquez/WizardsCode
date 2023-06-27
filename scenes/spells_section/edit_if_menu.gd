@@ -4,9 +4,10 @@ extends MarginContainer
 @onready var goblyn = %Goblyn
 @onready var bat_blue = %BatBlue
 
-@onready var spells_menu = get_tree().get_first_node_in_group("spells_menu_group")
+@onready var spells_menu
 
 func _ready():
+	spells_menu = get_parent().get_parent()
 	hide()
 	bat_purple.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.PURPLE_BAT_ENEMY))	
 	goblyn.pressed.connect(_on_target_pressed.bind(Sprites.TYPE.GOBLYN_ENEMY))	

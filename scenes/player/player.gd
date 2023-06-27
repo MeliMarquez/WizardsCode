@@ -4,9 +4,12 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var animation_tree = $AnimationTree
 @onready var playback = animation_tree.get("parameters/playback")
-@onready var spells_menu_instance = get_tree().get_first_node_in_group("spells_menu_group")
+@onready var spells_menu = preload("res://scenes/spells_section/spells_menu.tscn")
 @onready var magic_points_label = $CanvasLayer2/MagicPoints
-@onready var lose_level = $CanvasLayer/LoseLevel
+@onready var lose_level = $Menus/LoseLevel
+@onready var next_level = $Menus/NextLevel
+@onready var win_game = $Menus/Victory
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -15,7 +18,17 @@ const GRAVITY = 1000
 var spell = preload("res://scenes/spells/spell.tscn")
 var magic_points = 10
 
+var actual_level = 0
+@onready var spells_menu_instance = get_parent().get_node("Menu Spells/SpellsMenu")
+
+
 func _ready():
+	print("new player")
+	spells_menu_instance = get_parent().get_node("Menu Spells/SpellsMenu")
+	#spells_menu_instance = spells_menu.instantiate()
+	#get_parent().get_node("Menu Spells").add_child(spells_menu_instance)
+	#spells_menu_instance.set_position(Vector2(11,504))
+	#spells_menu_instance.set_size(Vector2(1142,126))
 	animation_tree.active = true
 	set_name("Player")
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
@@ -30,10 +43,14 @@ func _physics_process(delta):
 		
 	move_and_slide()	
 
+func go_to_next_level():
+	next_level.next_level()
+
 func _unhandled_input(_event):
 	## MOVEMENT
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
+		
 		velocity.x = direction * SPEED
 		playback.travel("walk");
 		if direction < 0:
@@ -56,10 +73,11 @@ func _unhandled_input(_event):
 		
 		
 		throw_spell(s_type,s_target_type,s_damage,s_type_lock,s_combo,s_combo_number)
-		decrease_magic_points()
+		
 		
 		
 func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_number):
+	decrease_magic_points()
 	var spell_instance = spell.instantiate()
 	get_parent().add_child(spell_instance)
 	
@@ -83,7 +101,6 @@ func decrease_magic_points():
 	self.magic_points-=1
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
 	if self.magic_points <= 0:
-		print("Te has quedado sin magia")
 		lose_level.lose_level()
 	
 	
@@ -99,3 +116,7 @@ func set_spell_values_from_spells_mixer(combo_number, spell_instance):
 		spell_instance.set_target_type(1)
 		spell_instance.set_damage(1)
 		spell_instance.set_target_lock(1)
+
+
+func win():
+	win_game.win_game()

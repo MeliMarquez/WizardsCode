@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://cahlx31tahu88"]
+
+[ext_resource type="Script" path="res://scenes/menus/pause/pause.gd" id="1_qttuo"]
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="2_h8j7o"]
+
+[node name="Pause" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qttuo")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_h8j7o")
+theme_override_font_sizes/font_size = 60
+text = "Pause"
+
+[node name="Resume" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h8j7o")
+theme_override_font_sizes/font_size = 50
+text = "Reanudar"
+
+[node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h8j7o")
+theme_override_font_sizes/font_size = 50
+text = "Volver a empezar"
+
+[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_h8j7o")
+theme_override_font_sizes/font_size = 50
+text = "Menu principal"

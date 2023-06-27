@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0hpyaqv560mw"]
+
+[ext_resource type="PackedScene" uid="uid://cahlx31tahu88" path="res://scenes/menus/pause/pause.tscn" id="1_h5fpe"]
+[ext_resource type="PackedScene" uid="uid://cnag7kka4fwcj" path="res://scenes/menus/lose_level/lose_level.tscn" id="2_woqf4"]
+[ext_resource type="PackedScene" uid="uid://cm7hh1ceq5f41" path="res://scenes/menus/next_level/next_level.tscn" id="3_561fw"]
+[ext_resource type="PackedScene" uid="uid://cgbisglrjc241" path="res://scenes/menus/victory/victory.tscn" id="4_a70py"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+
+[node name="Pause" parent="." instance=ExtResource("1_h5fpe")]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LoseLevel" parent="." instance=ExtResource("2_woqf4")]
+visible = false
+
+[node name="NextLevel" parent="." instance=ExtResource("3_561fw")]
+visible = false
+
+[node name="Victory" parent="." instance=ExtResource("4_a70py")]
+visible = false

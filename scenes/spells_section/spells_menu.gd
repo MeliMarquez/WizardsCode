@@ -29,10 +29,9 @@ var combo_number = 0
 var show_spells = false
 
 func _ready():
+	print("new spells section has born")
 	
 	_on_book_pressed()
-	
-	
 	normal_spell.pressed.connect(_on_spell_pressed.bind(0))
 	if_spell.pressed.connect(_on_spell_pressed.bind(1))
 	while_spell.pressed.connect(_on_spell_pressed.bind(2))
@@ -47,7 +46,6 @@ func _ready():
 
 ## ON BUTTONS PRESSED
 func _on_spell_pressed(spell_type_input):
-	print("presionando...",spell_type_input)
 	_on_edit_pressed(spell_type_input)
 	set_combo(false)
 	set_type(spell_type_input)

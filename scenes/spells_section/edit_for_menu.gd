@@ -6,10 +6,10 @@ extends MarginContainer
 var spells_menu
 
 func _ready():
+	spells_menu = get_parent().get_parent()
 	hide()
 	close.pressed.connect(_on_close_pressed)
 
-	spells_menu = get_tree().get_first_node_in_group("spells_menu_group")
 
 ## ON BUTTONS PRESSED
 func open_edition():

@@ -15,6 +15,8 @@ enum TYPE {FRIEND, PURPLE_BAT_ENEMY, BLUE_BAT_ENEMY, GOBLYN_ENEMY}
 @onready var hearth2 = $Sprite2D3
 @onready var hearth3 = $Sprite2D4
 
+@onready var control_levels = get_tree().get_first_node_in_group("control")
+
 @export var health = 3
 @export var sprite_type: TYPE
 
@@ -23,6 +25,7 @@ const GRAVITY = 1000
 func _ready():	
 	animation_tree.active = true
 	self.health_label.set_text(str(self.health))
+	add_to_level()
 	match sprite_type:
 		TYPE.PURPLE_BAT_ENEMY: 
 			playback.travel("idle_purple_bat")
@@ -33,26 +36,29 @@ func _ready():
 		TYPE.FRIEND:
 			playback.travel("idle_friend")
 	
+func add_to_level():
+	control_levels.add_enemie()
+
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta 		
 	move_and_slide()	
 	
-func handle_combo(combo_number):#REHACER TODO ESTO
-
+func handle_combo(_combo_number):#REHACER TODO ESTO
+	pass
 	## WHILE SOBRE SALUD Y IF 
-	if combo_number == 0:
-		if self.sprite_type == 0:
-			handle_hit(2,0,1,1)
+	#if combo_number == 0:
+	#	if self.sprite_type == 0:
+	#		handle_hit(2,0,1,1)
 			
 	## WHILE SOBRE SALUD Y IF SOBRE AMIGOS
-	elif combo_number == 1:
-		if self.sprite_type == 1:
-			handle_hit(2,1,1,1)
+	#elif combo_number == 1:
+	#	if self.sprite_type == 1:
+	#		handle_hit(2,1,1,1)
 			
 	## WHILE & WHILE
-	elif combo_number == 2:
-		handle_hit(2,self.sprite_type,self.health,0)
+	#elif combo_number == 2:
+	#	handle_hit(2,self.sprite_type,self.health,0)
 	
 func handle_hit(spell_type, target_type: Sprites.TYPE , damage, target_lock):
 	# Normal Spell
@@ -114,6 +120,7 @@ func health_decrease(damage):
 		handle_dead()
 		
 func handle_dead():
+	control_levels.delete_enemie()
 	if self.sprite_type == TYPE.FRIEND:
 		lost_level()
 	queue_free()

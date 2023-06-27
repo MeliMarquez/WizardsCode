@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2l3pdm5jnp54"]
+[gd_scene load_steps=6 format=3 uid="uid://b2l3pdm5jnp54"]
 
 [ext_resource type="Script" path="res://scenes/spells_section/edit_if_menu.gd" id="1_3j0y1"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_qv2dt"]
+[ext_resource type="Texture2D" uid="uid://cwjwpkaftlual" path="res://assets/images/sprites/blue_bat/blue_bat_icon.png" id="3_2eip6"]
+[ext_resource type="Texture2D" uid="uid://brppqck0er57c" path="res://assets/images/goblyn/goblyn_icon.png" id="4_fda2f"]
+[ext_resource type="Texture2D" uid="uid://orwfwujw7lcc" path="res://assets/images/sprites/purple_bat/purple_bat_icon.png" id="5_woqtw"]
 
 [node name="EditIfMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -31,28 +34,35 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 60
-text = "Atacar a"
+text = "Attack to"
 
-[node name="BatPurple" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 51
+
+[node name="BatBlue" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 50
-text = "Purple Bat"
+icon = ExtResource("3_2eip6")
+flat = true
 
-[node name="Goblyn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Goblyn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 50
-text = "Goblyn"
+icon = ExtResource("4_fda2f")
+flat = true
 
-[node name="BatBlue" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="BatPurple" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 50
-text = "Blue Bat"
+icon = ExtResource("5_woqtw")
+flat = true

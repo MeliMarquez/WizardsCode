@@ -27,12 +27,12 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Titulo" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_ta2m3")
 theme_override_font_sizes/font_size = 60
-text = "Atacar cuantas veces?"
+text = "Times to attack?"
 
 [node name="SpinBox" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

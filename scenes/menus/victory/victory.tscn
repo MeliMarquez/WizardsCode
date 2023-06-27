@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgbisglrjc241"]
 
-[ext_resource type="Script" path="res://scenes/lose_level/lose_level.gd" id="1_82hh6"]
+[ext_resource type="Script" path="res://scenes/menus/victory/victory.gd" id="1_ixver"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="2_p4voe"]
 
-[node name="MarginContainer" type="MarginContainer"]
+[node name="Victory" type="MarginContainer"]
 process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_82hh6")
+script = ExtResource("1_ixver")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -32,20 +32,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_p4voe")
 theme_override_font_sizes/font_size = 60
-text = "You lose!"
+text = "You win!"
 
-[node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Exit" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_p4voe")
 theme_override_font_sizes/font_size = 50
-text = "Volver a empezar"
-
-[node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_p4voe")
-theme_override_font_sizes/font_size = 50
-text = "Menu principal"
+text = "Exit"

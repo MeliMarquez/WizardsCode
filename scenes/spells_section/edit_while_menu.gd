@@ -6,11 +6,11 @@ extends MarginContainer
 var spells_menu
 
 func _ready():
+	spells_menu = get_parent().get_parent()
 	hide()
 	enemies.pressed.connect(_on_target_pressed.bind(0))	
 	health.pressed.connect(_on_target_pressed.bind(1))
 	
-	spells_menu = get_tree().get_first_node_in_group("spells_menu_group")
 
 func open_edition():
 	show()

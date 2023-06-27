@@ -1,9 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://coqdm6r0xau1d"]
+[gd_scene load_steps=40 format=3 uid="uid://csyqq0g17i1qf"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_kah1m"]
 [ext_resource type="Texture2D" uid="uid://30kvu1l2qnw7" path="res://assets/images/player_violet.png" id="2_ao1b1"]
-[ext_resource type="PackedScene" uid="uid://cahlx31tahu88" path="res://scenes/pause/pause.tscn" id="2_j5522"]
-[ext_resource type="PackedScene" uid="uid://cgbisglrjc241" path="res://scenes/lose_level/lose_level.tscn" id="4_ohx4p"]
+[ext_resource type="PackedScene" uid="uid://b0hpyaqv560mw" path="res://scenes/menus/menus.tscn" id="3_wfy52"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="4_svlgs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2sb3f"]
@@ -280,13 +279,14 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 radius = 4.8
 height = 24.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(3.3, 3.3)
 script = ExtResource("1_kah1m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7r7en")
 animation = &"idle"
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -303,19 +303,7 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_2w6ny")
 position = Vector2(-0.8, 1.6)
 shape = SubResource("CapsuleShape2D_csei5")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="Pause" parent="CanvasLayer" instance=ExtResource("2_j5522")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="LoseLevel" parent="CanvasLayer" instance=ExtResource("4_ohx4p")]
+[node name="Menus" parent="." instance=ExtResource("3_wfy52")]
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

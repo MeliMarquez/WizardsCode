@@ -759,7 +759,7 @@ horizontal_alignment = 1
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1e-05, 1e-05)
 sprite_frames = SubResource("SpriteFrames_hgrpq")
-animation = &"idle_goblyn"
+animation = &"hit_blue_bat"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
 root_node = NodePath("../..")
