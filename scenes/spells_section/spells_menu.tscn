@@ -1,11 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://cygke7njggw7b"]
+[gd_scene load_steps=21 format=3 uid="uid://cygke7njggw7b"]
 
 [ext_resource type="Script" path="res://scenes/spells_section/spells_menu.gd" id="1_jrmhn"]
 [ext_resource type="Texture2D" uid="uid://b8nknp333xy7x" path="res://assets/images/spells/20.png" id="2_5mx6g"]
 [ext_resource type="Texture2D" uid="uid://bruily2ti1gqb" path="res://assets/images/spells/202.png" id="3_8i4ll"]
+[ext_resource type="Texture2D" uid="uid://byv57fntg32u3" path="res://assets/images/spells/64x64_FX_15.png" id="4_2oedb"]
+[ext_resource type="Texture2D" uid="uid://ch6jqg6ojljtg" path="res://assets/images/spells/64x64_Aura_6.png" id="5_40mlj"]
+[ext_resource type="Texture2D" uid="uid://cbigqhvkt0bc0" path="res://assets/images/spells/NormalPressed.png" id="5_oejpt"]
+[ext_resource type="Texture2D" uid="uid://bwcck5lhy65k8" path="res://assets/images/spells/64x64_FX_2.png" id="6_7hrfp"]
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="6_fs51n"]
 [ext_resource type="PackedScene" uid="uid://b2l3pdm5jnp54" path="res://scenes/spells_section/edit_if_menu.tscn" id="6_usign"]
+[ext_resource type="Texture2D" uid="uid://cnef74b3gfhtl" path="res://assets/images/spells/IfPressed.png" id="7_1k8cw"]
 [ext_resource type="PackedScene" uid="uid://dsxntoqrvrdwc" path="res://scenes/spells_section/edit_for_menu.tscn" id="7_dbct7"]
+[ext_resource type="Texture2D" uid="uid://daknw0kpe8tsj" path="res://assets/images/spells/64x64_FX_7.png" id="7_fadvi"]
+[ext_resource type="Texture2D" uid="uid://8y808jjlgn6i" path="res://assets/images/spells/eye.png" id="7_nmgkh"]
+[ext_resource type="Texture2D" uid="uid://75c5shoy8i16" path="res://assets/images/spells/64x64_FX_11.png" id="8_cgc8i"]
 [ext_resource type="PackedScene" uid="uid://bi4vdvord4m5j" path="res://scenes/spells_section/edit_while_menu.tscn" id="8_dyw34"]
+[ext_resource type="Texture2D" uid="uid://dsgyodknnclok" path="res://assets/images/spells/64x64_FX_12.png" id="9_8sjhb"]
+[ext_resource type="Texture2D" uid="uid://dqe2xujegwp17" path="res://assets/images/spells/WhilePressed.png" id="9_eeog8"]
+[ext_resource type="Texture2D" uid="uid://c2rqs7n5yb5b7" path="res://assets/images/spells/64x64_FX_13.png" id="10_vuq7l"]
+[ext_resource type="Texture2D" uid="uid://d2wdsobgy68y" path="res://assets/images/spells/ForPressed.png" id="11_ql15s"]
 
 [sub_resource type="GDScript" id="GDScript_wxq2g"]
 script/source = "extends PanelContainer
@@ -16,7 +29,7 @@ script/source = "extends PanelContainer
 [node name="SpellsMenu" type="MarginContainer" groups=["spells_menu_group"]]
 self_modulate = Color(1, 1, 1, 0)
 offset_right = 1153.0
-offset_bottom = 86.0
+offset_bottom = 120.0
 theme_override_constants/margin_top = 20
 script = ExtResource("1_jrmhn")
 
@@ -32,71 +45,141 @@ theme_override_constants/separation = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Spells/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 51
 
 [node name="Book" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_5mx6g")
 texture_pressed = ExtResource("3_8i4ll")
-texture_focused = ExtResource("3_8i4ll")
+stretch_mode = 3
 
 [node name="VSeparator" type="VSeparator" parent="Spells/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="NormalSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "NORMAL SPELL"
-flat = true
-icon_alignment = 1
 
-[node name="IfSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+[node name="NormalSpell" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "IF SPELL"
-flat = true
-icon_alignment = 1
+texture_normal = ExtResource("4_2oedb")
+texture_pressed = ExtResource("5_oejpt")
+texture_focused = ExtResource("5_oejpt")
 
-[node name="WhileSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "WHILE SPELL"
-flat = true
-icon_alignment = 1
-expand_icon = true
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 3"
+horizontal_alignment = 1
 
-[node name="ForSpell" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+[node name="Sprite2D" type="Sprite2D" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer"]
+visible = false
+position = Vector2(60, 75)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("7_nmgkh")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="IfSpell" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "FOR SPELL"
-flat = true
-icon_alignment = 1
-expand_icon = true
+texture_normal = ExtResource("5_40mlj")
+texture_pressed = ExtResource("7_1k8cw")
+texture_focused = ExtResource("7_1k8cw")
+
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 2"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="WhileSpell" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("6_7hrfp")
+texture_pressed = ExtResource("9_eeog8")
+texture_focused = ExtResource("9_eeog8")
+
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 1"
+horizontal_alignment = 1
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ForSpell" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_fadvi")
+texture_pressed = ExtResource("11_ql15s")
+texture_focused = ExtResource("11_ql15s")
+
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 3"
+horizontal_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="Spells/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Combo1" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer5" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Combo1" type="Button" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer5"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "C1"
+icon = ExtResource("8_cgc8i")
 flat = true
 
-[node name="Combo2" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 3"
+horizontal_alignment = 1
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Combo2" type="Button" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer6"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "C2"
+icon = ExtResource("9_8sjhb")
 flat = true
 
-[node name="Combo3" type="Button" parent="Spells/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 3"
+horizontal_alignment = 1
+
+[node name="VBoxContainer7" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Combo3" type="Button" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer7"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "C3"
+icon = ExtResource("10_vuq7l")
 flat = true
+
+[node name="Label" type="Label" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer7"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_fs51n")
+theme_override_font_sizes/font_size = 25
+text = "MP: 3"
+horizontal_alignment = 1
 
 [node name="Combos" type="PanelContainer" parent="."]
 visible = false

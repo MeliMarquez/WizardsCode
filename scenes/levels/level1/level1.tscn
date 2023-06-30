@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://5d26vj4vq78b"]
+[gd_scene load_steps=6 format=3 uid="uid://cq45wul47udts"]
 
 [ext_resource type="PackedScene" uid="uid://3y5jumlxi0mi" path="res://scenes/background/fondo_juego.tscn" id="1_46p4o"]
 [ext_resource type="Script" path="res://scenes/levels/level1/level1.gd" id="1_nnd0r"]
@@ -19,18 +19,9 @@ position = Vector2(648, 430)
 health = 3
 sprite_type = 1
 
-[node name="Enemy2" parent="." instance=ExtResource("6_m388q")]
-position = Vector2(1000, 430)
-health = 3
-sprite_type = 1
-
-[node name="Enemy3" parent="." instance=ExtResource("6_m388q")]
-position = Vector2(833, 430)
-health = 3
-sprite_type = 1
-
 [node name="Menu Spells" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
+visible = false
 
 [node name="SpellsMenu" parent="Menu Spells" instance=ExtResource("4_qjoos")]
 offset_left = 11.0

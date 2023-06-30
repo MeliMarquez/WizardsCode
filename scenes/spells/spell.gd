@@ -16,10 +16,13 @@ var combo_number = 0
 
 func _ready():
 	set_name("Spell")
+	var normal = Color8(0,0,0)
 	var verde = Color8(0,1,0)
 	var rojo = Color8(1,0,0)
 	var azul = Color8(0,0,1)
-	if type == 1:
+	if type == 0:
+		set_color(normal)
+	elif type == 1:
 		set_color(verde)
 	elif type == 2:
 		set_color(rojo)
@@ -46,7 +49,7 @@ func _on_body_entered(body):
 		else:
 			#body.handle_hit(self.type, self.target_type, self.damage, self.target_lock)
 			body.handle_combo(self.combo_number)#, self.target_type, self.damage, self.target_lock)
-			if self.cxombo_number != 2:
+			if self.combo_number != 2:
 				queue_free()
 			
 			
@@ -56,6 +59,7 @@ func set_direction(direction_input):
 	self.direction = direction_input
 	
 func set_type(type_input):
+	print("spell again: ", type_input)
 	self.type = type_input
 	if self.type== 0:
 		set_color(Color(1,1,1))

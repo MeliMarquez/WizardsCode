@@ -21,3 +21,4 @@ func _on_close_pressed():
 	hide()
 	spells_menu.set_damage(spin_box.value)
 	spells_menu.set_focus(3)
+	spells_menu.set_damage(int(spin_box.value/2))

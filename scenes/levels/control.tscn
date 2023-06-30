@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2c64d8d1o88k"]
 
-[ext_resource type="Script" path="res://Control.gd" id="1_ryuep"]
+[ext_resource type="Script" path="res://scenes/levels/control.gd" id="1_3hlkg"]
 
 [node name="Control" type="Control" groups=["control"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_ryuep")
+script = ExtResource("1_3hlkg")

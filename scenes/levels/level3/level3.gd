@@ -1,11 +1,13 @@
-extends "res://scenes/levels/level0/level0.gd"
+extends GameLevel
 
 func set_text():
-	label_text = "You're incredible!\n
-	Oh, look! It's a Blue Bat!
-	Don't you dare killing blue bats!
-	We love them!<3"
-	
+	label_text = "Below, you can see the spellbook. 
+	You currently only have one spell 
+	that uses 3 magic points.\n
+	Try to defeat these bats without 
+	dying in the process..."
+
 func hide_elements():
-	spells_menu.hide()
+	var menu_spell = get_node("Menu Spells/SpellsMenu")	
+	menu_spell.set_not_visible("normal")
 	

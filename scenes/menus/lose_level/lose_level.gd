@@ -17,7 +17,10 @@ func lose_level():
 func _on_retry_pressed():
 	hide()
 	get_tree().paused = false
-	control_levels.initiate_level("")
+	if control_levels.get_level() == 3: 
+		control_levels.next_level()
+	else:
+		control_levels.initiate_level("")
 	
 func _on_main_menu_pressed():
 	get_tree().paused = false

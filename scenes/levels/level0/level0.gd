@@ -1,28 +1,16 @@
-class_name GameLevel
-extends Node2D
+extends GameLevel
 
-var label_text = ""
-@onready var magic_points = get_node("Player/Resources/MagicPoints")	
-@onready var magic_points_sprite = get_node("Player/Resources/Sprite2D3")
-@onready var spells_menu = get_node("Menu Spells")
-@onready var actual_level = get_node("Player/Resources/Level")	
-@onready var actual_level_sprite = get_node("Player/Resources/Sprite2D2")
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	var label = get_node("GameConstants/Tutorial/Label")
-	set_text()
-	label.set_text(label_text)
-	hide_elements()
-
-func hide_elements():
-	magic_points.hide()
-	magic_points_sprite.hide()
-	spells_menu.hide()
+@onready var area_2d = $Area2D
 
 func set_text():
-	label_text = "Hello World
-There you are, Goopert the Wizard!
-Can you help us defeating those evil
-bats?\n
-[Press X to throw a spell]"
+	label_text = "There you are, Goopert the Wizard!
+	Can you move? Try reaching the dotted \nline.
+	[ Press <- to walk to the left ]
+	[ Press -> to walk to the right ]
+	[ Press SPACE to jump ]"
+
+
+func _on_area_2d_body_entered(body):
+	if body.get_name() == "Player":
+		next_level()
+		

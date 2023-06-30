@@ -21,7 +21,7 @@ var magic_points = 10
 
 var actual_level = 0
 @onready var spells_menu_instance = get_parent().get_node("Menu Spells/SpellsMenu")
-
+@onready var control = get_tree().get_first_node_in_group("control")
 
 func _ready():
 	spells_menu_instance = get_parent().get_node("Menu Spells/SpellsMenu")
@@ -29,6 +29,7 @@ func _ready():
 	set_name("Player")
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
 	self.level_label.set_text("Level: 0")
+	
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -62,7 +63,7 @@ func _unhandled_input(_event):
 		playback.travel("idle");
 	
 	## SPELLS
-	if Input.is_action_just_pressed("spell"):
+	if Input.is_action_just_pressed("spell") and control.get_level()!= 0:
 		var s_type = spells_menu_instance.get_spell_type()
 		var s_target_type = spells_menu_instance.get_target_type()
 		var s_damage = spells_menu_instance.get_damage()
@@ -77,7 +78,8 @@ func _unhandled_input(_event):
 		
 		
 func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_number):
-	decrease_magic_points()
+	decrease_magic_points(damage)
+	playback.travel("cast");
 	var spell_instance = spell.instantiate()
 	get_parent().add_child(spell_instance)
 	
@@ -97,11 +99,12 @@ func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_numb
 		## ESTO ES PARA LANZAR UN HIT SPELL NO MAS SIN MAS NADA
 		set_spell_values_from_spells_mixer(combo_number, spell_instance)
 		
-func decrease_magic_points():
-	self.magic_points-=1
+func decrease_magic_points(damage):		
+	self.magic_points -= damage
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
-	if self.magic_points <= 0:
-		lose_level.lose_level()
+	if self.magic_points < 0:
+		if control.get_level() != 1:
+			lose_level.lose_level()
 	
 	
 func set_spell_values_from_spells_mixer(combo_number, spell_instance):
