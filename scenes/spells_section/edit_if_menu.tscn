@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/spells_section/edit_if_menu.gd" id="1_3j0y1"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_qv2dt"]
 [ext_resource type="Texture2D" uid="uid://cwjwpkaftlual" path="res://assets/images/sprites/blue_bat/blue_bat_icon.png" id="3_2eip6"]
-[ext_resource type="Texture2D" uid="uid://brppqck0er57c" path="res://assets/images/goblyn/goblyn_icon.png" id="4_fda2f"]
+[ext_resource type="Texture2D" uid="uid://brppqck0er57c" path="res://assets/images/sprites/goblin/goblyn_icon.png" id="4_kwvq0"]
 [ext_resource type="Texture2D" uid="uid://orwfwujw7lcc" path="res://assets/images/sprites/purple_bat/purple_bat_icon.png" id="5_woqtw"]
 
 [node name="EditIfMenu" type="MarginContainer"]
@@ -55,7 +55,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_qv2dt")
 theme_override_font_sizes/font_size = 50
-icon = ExtResource("4_fda2f")
+icon = ExtResource("4_kwvq0")
 flat = true
 
 [node name="BatPurple" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]

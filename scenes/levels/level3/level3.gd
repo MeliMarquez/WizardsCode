@@ -3,7 +3,7 @@ extends GameLevel
 func set_text():
 	label_text = "Below, you can see the spellbook. 
 	You currently only have one spell 
-	that uses 3 magic points.\n
+	that uses 2 Magic Points.\n
 	Try to defeat these bats without 
 	dying in the process..."
 

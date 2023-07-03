@@ -30,6 +30,9 @@ func _ready():
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
 	self.level_label.set_text("Level: 0")
 	
+func set_magic_points(mp):
+	self.magic_points = mp
+	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
 
 func _physics_process(delta):
 	if not is_on_floor():

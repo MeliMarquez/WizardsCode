@@ -17,7 +17,7 @@ func lose_level():
 func _on_retry_pressed():
 	hide()
 	get_tree().paused = false
-	if control_levels.get_level() == 3: 
+	if control_levels.get_level() == 4 or control_levels.get_level() == 7: 
 		control_levels.next_level()
 	else:
 		control_levels.initiate_level("")

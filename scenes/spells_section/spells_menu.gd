@@ -39,6 +39,8 @@ var v_box_container_4_visibility = false
 var v_box_container_5_visibility = false
 var v_box_container_6_visibility = false
 var v_box_container_7_visibility = false
+var disable_h = false
+var disable_e = false
 
 var spell_type = 0				# ALL SPELLS MANAGER: 	 0 Normal - 1 If - 2 While - 3 For
 var target_type: Sprites.TYPE
@@ -52,7 +54,7 @@ var show_spells = false
 
 func _ready():	
 	_on_spell_pressed(0)
-	
+
 	_on_book_pressed()
 	normal_spell.pressed.connect(_on_spell_pressed.bind(0))
 	if_spell.pressed.connect(_on_spell_pressed.bind(1))
@@ -117,7 +119,8 @@ func set_target_lock(target):
 	
 func set_focus(edition_type):
 	if edition_type == 1:
-		if_spell.grab_focus()
+		v_box_container_2.grab_focus()
+		#if_spell.grab_focus()
 	elif edition_type == 2:
 		while_spell.grab_focus()
 	elif edition_type == 3:
@@ -156,8 +159,10 @@ func _on_book_pressed():
 			v_box_container_2.show()
 		if v_box_container_3_visibility:
 			v_box_container_3.show()
+			edit_while_menu.disable_elements(self.disable_e, self.disable_h)
 		if v_box_container_4_visibility:
 			v_box_container_4.show()
+			
 		
 		if combo:
 			v_separator_2.show()
@@ -186,24 +191,40 @@ func _on_book_pressed():
 func set_not_visible(s):
 	if s == "if":
 		self.v_box_container_2_visibility = true
+	elif s == "while_h":
+		self.v_box_container_2_visibility = true
+		self.v_box_container_3_visibility = true
+		self.disable_h = true
+	elif s == "while_e":
+		self.v_box_container_2_visibility = true
+		self.v_box_container_3_visibility = true
+		self.disable_e = true
 	elif s == "while":
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
+		self.disable_h = true
+		self.disable_e = true
 	elif s == "for":
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
+		self.disable_h = true
+		self.disable_e = true
 	elif s == "c1":
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
 		self.v_box_container_5_visibility = true
+		self.disable_h = true
+		self.disable_e = true
 	elif s == "c2":
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
 		self.v_box_container_5_visibility = true
 		self.v_box_container_6_visibility = true
+		self.disable_h = true
+		self.disable_e = true
 	elif s == "c3":
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
@@ -211,7 +232,10 @@ func set_not_visible(s):
 		self.v_box_container_5_visibility = true
 		self.v_box_container_6_visibility = true
 		self.v_box_container_7_visibility = true
-
+		self.disable_h = true
+		self.disable_e = true
+	self.show_spells = true
+	_on_book_pressed()
 		
 		
 		

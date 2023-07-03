@@ -24,6 +24,11 @@ position = Vector2(600, 402)
 health = 3
 sprite_type = 1
 
+[node name="Enemy2" parent="." instance=ExtResource("3_urg1p")]
+position = Vector2(1100, 405)
+health = 3
+sprite_type = 2
+
 [node name="Menu Spells" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 
@@ -31,8 +36,3 @@ unique_name_in_owner = true
 offset_left = 11.0
 offset_top = 504.0
 offset_bottom = 630.0
-
-[node name="Enemy2" parent="." instance=ExtResource("3_urg1p")]
-position = Vector2(1100, 405)
-health = 3
-sprite_type = 2

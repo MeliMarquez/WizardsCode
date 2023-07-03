@@ -2,12 +2,17 @@ extends Control
 
 const levels = [
 	"res://scenes/levels/level0/level0.tscn",
-	#"res://scenes/levels/level1/level1.tscn",
-	#"res://scenes/levels/level2/level2.tscn",
-	#"res://scenes/levels/level3/level3.tscn",
+	"res://scenes/levels/level1/level1.tscn",
+	"res://scenes/levels/level2/level2.tscn",
+	"res://scenes/levels/level3/level3.tscn",
 	"res://scenes/levels/level4/level4.tscn",
 	"res://scenes/levels/level5/level5.tscn",
-	
+	"res://scenes/levels/level6/level6.tscn",
+	"res://scenes/levels/level7/level7.tscn",
+	"res://scenes/levels/level8/level8.tscn",
+	"res://scenes/levels/level9/level9.tscn",
+	"res://scenes/levels/level10/level10.tscn",
+	"res://scenes/levels/level11/level11.tscn",
 ]
 
 @onready var main_menu = preload("res://scenes/main_menu/main_menu.tscn")

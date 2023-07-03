@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4d5fs2myl420"]
+[gd_scene load_steps=6 format=3 uid="uid://d4d5fs2myl420"]
 
+[ext_resource type="Script" path="res://scenes/levels/level6/level6.gd" id="1_gx14m"]
 [ext_resource type="PackedScene" uid="uid://3y5jumlxi0mi" path="res://scenes/background/fondo_juego.tscn" id="1_o52xg"]
 [ext_resource type="PackedScene" uid="uid://csyqq0g17i1qf" path="res://scenes/player/player.tscn" id="2_xhw0j"]
 [ext_resource type="PackedScene" uid="uid://cgqq3jtf4xf2j" path="res://scenes/enemies/enemy.tscn" id="3_h6w1e"]
 [ext_resource type="PackedScene" uid="uid://cygke7njggw7b" path="res://scenes/spells_section/spells_menu.tscn" id="4_f6o56"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_gx14m")
 
 [node name="GameConstants" parent="." instance=ExtResource("1_o52xg")]
 
@@ -15,7 +17,12 @@ position = Vector2(82, 63)
 [node name="Enemy" parent="." instance=ExtResource("3_h6w1e")]
 position = Vector2(744, 405)
 health = 3
-sprite_type = 2
+sprite_type = 1
+
+[node name="Enemy2" parent="." instance=ExtResource("3_h6w1e")]
+position = Vector2(1100, 405)
+health = 3
+sprite_type = 3
 
 [node name="Menu Spells" type="CanvasLayer" parent="."]
 unique_name_in_owner = true

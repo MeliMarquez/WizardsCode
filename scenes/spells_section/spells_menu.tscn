@@ -47,6 +47,9 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_constants/separation = 51
 
+[node name="LabelSeparation" type="Label" parent="Spells/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
 [node name="Book" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_5mx6g")
@@ -70,7 +73,7 @@ texture_focused = ExtResource("5_oejpt")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_fs51n")
 theme_override_font_sizes/font_size = 25
-text = "MP: 3"
+text = "MP: 2"
 horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -93,7 +96,7 @@ texture_focused = ExtResource("7_1k8cw")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_fs51n")
 theme_override_font_sizes/font_size = 25
-text = "MP: 2"
+text = "MP: 1"
 horizontal_alignment = 1
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
@@ -110,10 +113,11 @@ texture_focused = ExtResource("9_eeog8")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_fs51n")
 theme_override_font_sizes/font_size = 25
-text = "MP: 1"
+text = "MP: 4-2"
 horizontal_alignment = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ForSpell" type="TextureButton" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer4"]
@@ -127,7 +131,7 @@ texture_focused = ExtResource("11_ql15s")
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_fs51n")
 theme_override_font_sizes/font_size = 25
-text = "MP: 3"
+text = "MP: n/2"
 horizontal_alignment = 1
 
 [node name="VSeparator2" type="VSeparator" parent="Spells/VBoxContainer/HBoxContainer"]
@@ -150,6 +154,7 @@ text = "MP: 3"
 horizontal_alignment = 1
 
 [node name="VBoxContainer6" type="VBoxContainer" parent="Spells/VBoxContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="Combo2" type="Button" parent="Spells/VBoxContainer/HBoxContainer/VBoxContainer6"]

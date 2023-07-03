@@ -27,3 +27,11 @@ func _on_target_pressed(target_lock_input):
 	else:
 		spells_menu.set_damage(2)	
 
+func disable_elements(e, h):
+	if not e:
+		enemies.set_disabled(true)
+	elif not h:
+		health.set_disabled(true)
+	else:
+		enemies.set_disabled(false)
+		health.set_disabled(false)

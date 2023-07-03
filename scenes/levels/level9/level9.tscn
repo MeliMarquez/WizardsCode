@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0rmwqoymh2sn"]
+
+[ext_resource type="Script" path="res://scenes/levels/level9/level9.gd" id="1_4tfem"]
+[ext_resource type="PackedScene" uid="uid://3y5jumlxi0mi" path="res://scenes/background/fondo_juego.tscn" id="1_lephe"]
+[ext_resource type="PackedScene" uid="uid://csyqq0g17i1qf" path="res://scenes/player/player.tscn" id="2_30lg3"]
+[ext_resource type="PackedScene" uid="uid://cgqq3jtf4xf2j" path="res://scenes/enemies/enemy.tscn" id="3_lpxcl"]
+[ext_resource type="PackedScene" uid="uid://cygke7njggw7b" path="res://scenes/spells_section/spells_menu.tscn" id="4_w1mm1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_4tfem")
+
+[node name="GameConstants" parent="." instance=ExtResource("1_lephe")]
+
+[node name="Player" parent="." instance=ExtResource("2_30lg3")]
+position = Vector2(82, 63)
+
+[node name="Enemy" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(744, 405)
+health = 1
+sprite_type = 1
+
+[node name="Enemy2" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(644, 405)
+health = 1
+sprite_type = 2
+
+[node name="Enemy3" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(544, 405)
+health = 1
+sprite_type = 1
+
+[node name="Enemy4" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(444, 405)
+health = 1
+sprite_type = 1
+
+[node name="Enemy5" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(344, 405)
+health = 1
+sprite_type = 2
+
+[node name="Enemy6" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(244, 405)
+health = 1
+sprite_type = 1
+
+[node name="Enemy7" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(844, 405)
+health = 1
+sprite_type = 2
+
+[node name="Enemy8" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(944, 405)
+health = 1
+sprite_type = 2
+
+[node name="Enemy9" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(1044, 405)
+health = 1
+sprite_type = 2
+
+[node name="Enemy10" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(394, 405)
+health = 1
+sprite_type = 1
+
+[node name="Enemy11" parent="." instance=ExtResource("3_lpxcl")]
+position = Vector2(794, 405)
+health = 1
+sprite_type = 1
+
+[node name="Menu Spells" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="SpellsMenu" parent="Menu Spells" instance=ExtResource("4_w1mm1")]
+offset_left = 11.0
+offset_top = 504.0
+offset_bottom = 630.0
