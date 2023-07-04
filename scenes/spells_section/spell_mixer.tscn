@@ -1,14 +1,191 @@
-[gd_scene load_steps=3 format=3 uid="uid://dehkgto52qs0e"]
+[gd_scene load_steps=13 format=3 uid="uid://dehkgto52qs0e"]
 
+[ext_resource type="Script" path="res://scenes/spells_section/spell_mixer.gd" id="1_o1crf"]
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="2_ax75o"]
 [ext_resource type="Texture2D" uid="uid://duwc8ht0vmli5" path="res://assets/images/spells/64x64_FX_3.png" id="3_pgvdy"]
+[ext_resource type="PackedScene" uid="uid://c6t061pskfv8j" path="res://scenes/spells_section/spell_selection.tscn" id="4_ikoj8"]
+[ext_resource type="Texture2D" uid="uid://cu2ba43ftmwin" path="res://assets/UI/assets/ArrowRight.png" id="5_yl68b"]
+[ext_resource type="Texture2D" uid="uid://771rwmo7o6hi" path="res://assets/images/tutorial.png" id="6_1fhpk"]
+
+[sub_resource type="Animation" id="Animation_tvwo4"]
+resource_name = "arrow_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D3:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D4:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hm2n0"]
+resource_name = "tutorial"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kyoup"]
+resource_name = "label1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_mdco3"]
+resource_name = "label2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label2:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_lqko0"]
+resource_name = "label3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Label3:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghc80"]
+_data = {
+"arrow_left": SubResource("Animation_tvwo4"),
+"label1": SubResource("Animation_kyoup"),
+"label2": SubResource("Animation_mdco3"),
+"label3": SubResource("Animation_lqko0"),
+"tutorial": SubResource("Animation_hm2n0")
+}
 
 [node name="SpellMixer" type="MarginContainer"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_o1crf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(177, 326)
+scale = Vector2(1, 1.14063)
+texture = ExtResource("6_1fhpk")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 364.0
+offset_bottom = 226.0
+text = "Click on the circles to add a
+spell."
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 364.0
+offset_bottom = 226.0
+text = "
+
+
+Click on [ COMBINE ] to mix
+the two spells, you can see 
+the result below!"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="Label3" type="Label" parent="CanvasLayer"]
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 364.0
+offset_bottom = 226.0
+text = "
+
+
+
+
+
+
+Now you're done, press 
+[ Close ]."
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -49,10 +226,9 @@ text = "+"
 layout_mode = 2
 texture_normal = ExtResource("3_pgvdy")
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Combine" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "="
-horizontal_alignment = 1
+text = "Combine"
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -63,3 +239,35 @@ stretch_mode = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "Close"
+
+[node name="SpellSelection" parent="." instance=ExtResource("4_ikoj8")]
+visible = false
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(359, 286)
+texture = ExtResource("5_yl68b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(795, 286)
+texture = ExtResource("5_yl68b")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(690, 330)
+texture = ExtResource("5_yl68b")
+flip_h = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(690, 440)
+texture = ExtResource("5_yl68b")
+flip_h = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ghc80")
+}

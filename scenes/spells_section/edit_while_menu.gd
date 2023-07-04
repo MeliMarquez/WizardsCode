@@ -23,9 +23,9 @@ func _on_target_pressed(target_lock_input):
 	hide()
 	spells_menu.set_focus(2)
 	if target_lock_input == 0:
-		spells_menu.set_damage(4)	
+		spells_menu.set_mp(4)	
 	else:
-		spells_menu.set_damage(2)	
+		spells_menu.set_mp(2)	
 
 func disable_elements(e, h):
 	if not e:

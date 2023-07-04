@@ -10,6 +10,7 @@ extends CharacterBody2D
 @onready var next_level = $Menus/NextLevel
 @onready var win_game = $Menus/Victory
 @onready var level_label = $Resources/Level
+@onready var audio_stream_player_2d = $AudioStreamPlayer2D
 
 
 const SPEED = 300.0
@@ -72,16 +73,16 @@ func _unhandled_input(_event):
 		var s_damage = spells_menu_instance.get_damage()
 		var s_type_lock = spells_menu_instance.get_target_lock()
 		
-		var s_combo = spells_menu_instance.get_combo()
+		var mp = spells_menu_instance.get_mp()
+		
+		var s_combo = spells_menu_instance.get_combo()	
 		var s_combo_number = spells_menu_instance.get_combo_number()
 		
-		
-		throw_spell(s_type,s_target_type,s_damage,s_type_lock,s_combo,s_combo_number)
-		
+		throw_spell(s_type,s_target_type,s_damage,s_type_lock,s_combo,s_combo_number,mp)
 		
 		
-func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_number):
-	decrease_magic_points(damage)
+func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_number, mp):
+	
 	playback.travel("cast");
 	var spell_instance = spell.instantiate()
 	get_parent().add_child(spell_instance)
@@ -91,6 +92,7 @@ func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_numb
 		spell_instance.set_direction(-1)
 		
 	if not combo:
+		decrease_magic_points(mp)
 		spell_instance.set_type(spell_type)
 		spell_instance.set_target_type(target_type)
 		spell_instance.set_damage(damage)
@@ -99,30 +101,21 @@ func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_numb
 	else: 
 		spell_instance.set_combo(true)
 		spell_instance.set_combo_number(combo_number)
-		## ESTO ES PARA LANZAR UN HIT SPELL NO MAS SIN MAS NADA
-		set_spell_values_from_spells_mixer(combo_number, spell_instance)
+		if combo_number == 0:
+			decrease_magic_points(3) ###########AAAAA
+
 		
-func decrease_magic_points(damage):		
-	self.magic_points -= damage
+		
+func decrease_magic_points(mp):		
+	self.magic_points -= mp
 	self.magic_points_label.set_text(" Magic Points: "+str(self.magic_points))
 	if self.magic_points < 0:
 		if control.get_level() != 1:
 			lose_level.lose_level()
-	
-	
-func set_spell_values_from_spells_mixer(combo_number, spell_instance):
-	## POR AHORA CON VALORES
-	if combo_number == 0:
-		spell_instance.set_type(2)
-		spell_instance.set_target_type(0)
-		spell_instance.set_damage(1)
-		spell_instance.set_target_lock(1)		
-	elif combo_number == 1:
-		spell_instance.set_type(2)
-		spell_instance.set_target_type(1)
-		spell_instance.set_damage(1)
-		spell_instance.set_target_lock(1)
-
 
 func win():
 	win_game.win_game()
+
+func audio():
+	audio_stream_player_2d.play()
+	await audio_stream_player_2d.finished

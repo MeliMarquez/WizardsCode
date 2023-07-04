@@ -13,7 +13,7 @@ extends MarginContainer
 @onready var edit_while_menu = %EditWhileMenu
 @onready var edit_for_menu = %EditForMenu
 
-@onready var book = $Spells/VBoxContainer/HBoxContainer/Book
+@onready var book = $Spells/VBoxContainer/HBoxContainer/VBoxContainer8/Book
 @onready var v_separator = $Spells/VBoxContainer/HBoxContainer/VSeparator
 @onready var v_separator_2 = $Spells/VBoxContainer/HBoxContainer/VSeparator2
 
@@ -33,6 +33,10 @@ extends MarginContainer
 @onready var v_box_container_6 = $Spells/VBoxContainer/HBoxContainer/VBoxContainer6
 @onready var v_box_container_7 = $Spells/VBoxContainer/HBoxContainer/VBoxContainer7
 
+@onready var add_spell = $Spells/VBoxContainer/HBoxContainer/VBoxContainer8/Button
+@onready var add_spell_label = $Spells/VBoxContainer/HBoxContainer/VBoxContainer8/Sprite2D
+@onready var spell_mixer = $SpellMixer/SpellMixer
+
 var v_box_container_2_visibility = false
 var v_box_container_3_visibility = false
 var v_box_container_4_visibility = false
@@ -46,6 +50,7 @@ var spell_type = 0				# ALL SPELLS MANAGER: 	 0 Normal - 1 If - 2 While - 3 For
 var target_type: Sprites.TYPE
 var damage = 1					# FOR SPELL MANAGER:   	 Amount of attack's damage
 var target_lock = 1			# WHILE SPELL MANAGER: 	 0 Amount of enemys - 1 Amount of life
+var mp = 0
 
 var combo = false
 var combo_number = 0
@@ -56,6 +61,7 @@ func _ready():
 	_on_spell_pressed(0)
 
 	_on_book_pressed()
+	set_focus(0)
 	normal_spell.pressed.connect(_on_spell_pressed.bind(0))
 	if_spell.pressed.connect(_on_spell_pressed.bind(1))
 	while_spell.pressed.connect(_on_spell_pressed.bind(2))
@@ -65,8 +71,11 @@ func _ready():
 	combo_2.pressed.connect(_on_combo_pressed.bind(1))	
 	combo_3.pressed.connect(_on_combo_pressed.bind(2))
 	
+	add_spell.pressed.connect(_on_add_spell_pressed)
 	#book.pressed.connect(_on_book_pressed)
 
+func _on_add_spell_pressed():
+	spell_mixer.show_spell_mixer()
 
 ## ON BUTTONS PRESSED
 func _on_spell_pressed(spell_type_input):
@@ -79,16 +88,21 @@ func _on_spell_pressed(spell_type_input):
 func _on_combo_pressed(combo_number_input):
 	set_combo(true)
 	set_combo_number(combo_number_input)
-			
+
+func set_mp(mp):
+	self.mp=mp
+func get_mp():
+	return self.mp
+
 func _on_edit_pressed(edition_type):
 	
 	if edition_type == 0:
-		set_damage(2)
+		set_mp(2)
 		return
 	
 	#IF EDITIOM MENU
 	elif edition_type == 1:
-		set_damage(1)		
+		set_mp(1)		
 		edit_if_menu.show()
 		if_spell.grab_focus()
 		
@@ -118,9 +132,10 @@ func set_target_lock(target):
 	self.target_lock = target
 	
 func set_focus(edition_type):
-	if edition_type == 1:
-		v_box_container_2.grab_focus()
-		#if_spell.grab_focus()
+	if edition_type == 0:
+		normal_spell.grab_focus()
+	elif edition_type == 1:
+		if_spell.grab_focus()
 	elif edition_type == 2:
 		while_spell.grab_focus()
 	elif edition_type == 3:
@@ -189,6 +204,7 @@ func _on_book_pressed():
 		self.show_spells = true
 
 func set_not_visible(s):
+	disable_add()
 	if s == "if":
 		self.v_box_container_2_visibility = true
 	elif s == "while_h":
@@ -210,7 +226,18 @@ func set_not_visible(s):
 		self.v_box_container_4_visibility = true
 		self.disable_h = true
 		self.disable_e = true
+	elif s == "add":
+		self.v_box_container_2_visibility = true
+		self.v_box_container_3_visibility = true
+		self.v_box_container_4_visibility = true
+		self.disable_h = true
+		self.disable_e = true
+		add_spell.disabled = false
+		add_spell_label.modulate = Color(1, 1, 1, 1)
+		add_spell.show()
+		add_spell_label.show()
 	elif s == "c1":
+		set_combo(true)
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
@@ -218,6 +245,7 @@ func set_not_visible(s):
 		self.disable_h = true
 		self.disable_e = true
 	elif s == "c2":
+		set_combo(true)
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
@@ -226,6 +254,7 @@ func set_not_visible(s):
 		self.disable_h = true
 		self.disable_e = true
 	elif s == "c3":
+		set_combo(true)
 		self.v_box_container_2_visibility = true
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
@@ -237,7 +266,15 @@ func set_not_visible(s):
 	self.show_spells = true
 	_on_book_pressed()
 		
-		
+func disable_add():
+	add_spell.disabled = true
+	add_spell.hide()
+	add_spell_label.modulate = Color(0.745098, 0.745098, 0.745098, 1)
+	add_spell_label.hide()
+	
+func show_c1():
+	set_combo(true)
+	set_not_visible("c1")
 		
 		
 		

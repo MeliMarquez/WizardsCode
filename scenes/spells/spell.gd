@@ -48,8 +48,7 @@ func _on_body_entered(body):
 
 		else:
 			#body.handle_hit(self.type, self.target_type, self.damage, self.target_lock)
-			body.handle_combo(self.combo_number)#, self.target_type, self.damage, self.target_lock)
-			if self.combo_number != 2:
+			if body.handle_combo(self.combo_number):#, self.target_type, self.damage, self.target_lock)
 				queue_free()
 			
 			

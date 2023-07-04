@@ -15,6 +15,8 @@ enum TYPE {FRIEND, PURPLE_BAT_ENEMY, BLUE_BAT_ENEMY, GOBLYN_ENEMY}
 
 @onready var control_levels = get_tree().get_first_node_in_group("control")
 
+@onready var player = get_parent().get_node("Player")
+
 @export var health: int
 @export var sprite_type: TYPE
 
@@ -44,21 +46,22 @@ func _physics_process(delta):
 		velocity.y += GRAVITY * delta 		
 	move_and_slide()	
 	
-func handle_combo(_combo_number):#REHACER TODO ESTO
-	pass
-	## WHILE SOBRE SALUD Y IF 
-	#if combo_number == 0:
-	#	if self.sprite_type == 0:
-	#		handle_hit(2,0,1,1)
-			
-	## WHILE SOBRE SALUD Y IF SOBRE AMIGOS
-	#elif combo_number == 1:
-	#	if self.sprite_type == 1:
-	#		handle_hit(2,1,1,1)
-			
-	## WHILE & WHILE
-	#elif combo_number == 2:
-	#	handle_hit(2,self.sprite_type,self.health,0)
+func handle_combo(combo_number):
+	## WHILE ENEMIES IF PURPLE BAT 
+	if combo_number == 0:
+		if Sprites.TYPE.PURPLE_BAT_ENEMY == self.sprite_type:
+			health_decrease(1)
+	## IF GOBLIN WHILE HEALTH
+	elif combo_number == 1:
+		if Sprites.TYPE.GOBLYN_ENEMY == self.sprite_type:
+			while self.health >= 1:
+				health_decrease(1)
+			return true
+	## WHILE ENEMIES WHILE HEALTH
+	elif combo_number == 2:
+		while self.health >= 1:
+				health_decrease(1)
+
 	
 func handle_hit(spell_type, target_type: Sprites.TYPE , damage, target_lock):
 	# Normal Spell
@@ -96,6 +99,7 @@ func handle_hit(spell_type, target_type: Sprites.TYPE , damage, target_lock):
 			
 
 func health_decrease(damage):
+	player.audio()
 	match sprite_type:
 		TYPE.PURPLE_BAT_ENEMY:
 			playback.travel("hit_purple_bat")

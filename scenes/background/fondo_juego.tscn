@@ -446,6 +446,7 @@ size = Vector2(133, 665)
 [node name="FondoJuego" type="Node2D"]
 
 [node name="Tutorial" type="CanvasLayer" parent="."]
+layer = -30
 script = ExtResource("1_1bbul")
 
 [node name="Sprite2D" type="Sprite2D" parent="Tutorial"]

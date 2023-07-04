@@ -3,7 +3,7 @@ extends GameLevel
 func set_text():
 	label_text = "Did you see that? 
 	This spell has 2 types! Try the 
-	second one, it attacks all enemies
+	first one, it attacks all enemies
 	it finds at once!"
 
 func hide_elements():

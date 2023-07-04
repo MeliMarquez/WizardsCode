@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://f1jjy7bgu6gn"]
+
+[ext_resource type="PackedScene" uid="uid://3y5jumlxi0mi" path="res://scenes/background/fondo_juego.tscn" id="1_h7148"]
+[ext_resource type="Script" path="res://scenes/levels/final_level/final_level.gd" id="1_jrjme"]
+[ext_resource type="PackedScene" uid="uid://csyqq0g17i1qf" path="res://scenes/player/player.tscn" id="2_mcmpd"]
+[ext_resource type="PackedScene" uid="uid://cygke7njggw7b" path="res://scenes/spells_section/spells_menu.tscn" id="3_37e1m"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_jrjme")
+
+[node name="GameConstants" parent="." instance=ExtResource("1_h7148")]
+
+[node name="Player" parent="." instance=ExtResource("2_mcmpd")]
+position = Vector2(82, 63)
+
+[node name="Menu Spells" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+
+[node name="SpellsMenu" parent="Menu Spells" instance=ExtResource("3_37e1m")]
+offset_left = 11.0
+offset_top = 504.0
+offset_bottom = 630.0
