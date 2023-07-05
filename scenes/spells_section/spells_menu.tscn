@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cygke7njggw7b"]
+[gd_scene load_steps=24 format=3 uid="uid://cygke7njggw7b"]
 
 [ext_resource type="Script" path="res://scenes/spells_section/spells_menu.gd" id="1_jrmhn"]
 [ext_resource type="Texture2D" uid="uid://b8nknp333xy7x" path="res://assets/images/spells/20.png" id="2_5mx6g"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://dhogicee2128c" path="res://assets/images/spells/64x64_FX_2_focus.png" id="12_r3gp2"]
 [ext_resource type="Texture2D" uid="uid://chovr30aopv1s" path="res://assets/images/spells/64x64_FX_7_focus.png" id="14_yk626"]
 [ext_resource type="PackedScene" uid="uid://dehkgto52qs0e" path="res://scenes/spells_section/spell_mixer.tscn" id="21_w5gph"]
+[ext_resource type="PackedScene" uid="uid://byq0p130jkbhy" path="res://scenes/spells_section/spell_mixer_2.tscn" id="22_s3bi1"]
 
 [sub_resource type="GDScript" id="GDScript_wxq2g"]
 script/source = "extends PanelContainer
@@ -208,7 +209,7 @@ flat = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("6_fs51n")
 theme_override_font_sizes/font_size = 25
-text = "MP: 3"
+text = "MP: 5"
 horizontal_alignment = 1
 
 [node name="Combos" type="PanelContainer" parent="."]
@@ -265,5 +266,9 @@ unique_name_in_owner = true
 [node name="SpellMixer" type="CanvasLayer" parent="."]
 
 [node name="SpellMixer" parent="SpellMixer" instance=ExtResource("21_w5gph")]
+visible = false
+
+[node name="SpellMixer2" parent="SpellMixer" instance=ExtResource("22_s3bi1")]
+visible = false
 
 [connection signal="pressed" from="Spells/VBoxContainer/HBoxContainer/VBoxContainer8/Book" to="." method="_on_book_pressed"]

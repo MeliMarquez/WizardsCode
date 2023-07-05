@@ -102,7 +102,9 @@ func throw_spell(spell_type, target_type, damage, target_lock, combo, combo_numb
 		spell_instance.set_combo(true)
 		spell_instance.set_combo_number(combo_number)
 		if combo_number == 0:
-			decrease_magic_points(3) ###########AAAAA
+			decrease_magic_points(3)
+		elif combo_number == 2:
+			decrease_magic_points(5)
 
 		
 		

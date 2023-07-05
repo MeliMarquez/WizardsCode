@@ -72,6 +72,7 @@ func selection(spell_number):
 		arrow_1.show()
 		animation_player.play("arrow_2")
 		while_spell.disabled = false
+		
 	
 	
 func _on_close_pressed():

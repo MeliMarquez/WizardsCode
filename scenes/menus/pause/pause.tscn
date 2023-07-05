@@ -36,7 +36,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_h8j7o")
 theme_override_font_sizes/font_size = 50
-text = "Reanudar"
+text = "Resume"
 
 [node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -44,7 +44,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_h8j7o")
 theme_override_font_sizes/font_size = 50
-text = "Volver a empezar"
+text = "Retry"
 
 [node name="MainMenu" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -52,4 +52,4 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_h8j7o")
 theme_override_font_sizes/font_size = 50
-text = "Menu principal"
+text = "Main Menu"

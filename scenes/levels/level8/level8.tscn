@@ -1,15 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxlu2yx0d4fse"]
+[gd_scene load_steps=9 format=3 uid="uid://bxlu2yx0d4fse"]
 
 [ext_resource type="Script" path="res://scenes/levels/level8/level8.gd" id="1_it5sl"]
 [ext_resource type="PackedScene" uid="uid://3y5jumlxi0mi" path="res://scenes/background/fondo_juego.tscn" id="1_s323i"]
 [ext_resource type="PackedScene" uid="uid://csyqq0g17i1qf" path="res://scenes/player/player.tscn" id="2_fe11r"]
+[ext_resource type="Texture2D" uid="uid://cu2ba43ftmwin" path="res://assets/UI/assets/ArrowRight.png" id="3_hj54f"]
 [ext_resource type="PackedScene" uid="uid://cgqq3jtf4xf2j" path="res://scenes/enemies/enemy.tscn" id="3_oovjy"]
 [ext_resource type="PackedScene" uid="uid://cygke7njggw7b" path="res://scenes/spells_section/spells_menu.tscn" id="4_fwnje"]
+
+[sub_resource type="Animation" id="Animation_gnykc"]
+resource_name = "arrow"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(500, 440), Vector2(500, 455), Vector2(500, 440)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2rj43"]
+_data = {
+"arrow": SubResource("Animation_gnykc")
+}
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_it5sl")
 
 [node name="GameConstants" parent="." instance=ExtResource("1_s323i")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(500, 440)
+rotation = 1.5708
+texture = ExtResource("3_hj54f")
 
 [node name="Player" parent="." instance=ExtResource("2_fe11r")]
 position = Vector2(82, 63)
@@ -41,3 +69,8 @@ unique_name_in_owner = true
 offset_left = 11.0
 offset_top = 504.0
 offset_bottom = 630.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2rj43")
+}

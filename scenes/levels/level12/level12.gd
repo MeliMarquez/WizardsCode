@@ -3,9 +3,9 @@ extends GameLevel
 func set_text():
 	label_text = "Now... Listen young wizard!
 	The next levels you'll have to 
-	go beyond the basic magic! Discover
-	new spells by the union of the ones
-	you already now and defeat the evil!
+	go beyond the basics of magic! Discover
+	new spells by combining the ones
+	you already know and defeat evil!
 	Take a break destroying this goblin."
 
 func hide_elements():

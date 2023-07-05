@@ -36,6 +36,7 @@ extends MarginContainer
 @onready var add_spell = $Spells/VBoxContainer/HBoxContainer/VBoxContainer8/Button
 @onready var add_spell_label = $Spells/VBoxContainer/HBoxContainer/VBoxContainer8/Sprite2D
 @onready var spell_mixer = $SpellMixer/SpellMixer
+@onready var spell_mixer_2 = $SpellMixer/SpellMixer2
 
 var v_box_container_2_visibility = false
 var v_box_container_3_visibility = false
@@ -56,6 +57,7 @@ var combo = false
 var combo_number = 0
 
 var show_spells = false
+@onready var control = get_tree().get_first_node_in_group("control")
 
 func _ready():	
 	_on_spell_pressed(0)
@@ -75,7 +77,10 @@ func _ready():
 	#book.pressed.connect(_on_book_pressed)
 
 func _on_add_spell_pressed():
-	spell_mixer.show_spell_mixer()
+	if control.get_level() == 13:
+		spell_mixer.show_spell_mixer()
+	elif control.get_level() == 16:
+		spell_mixer_2.show_spell_mixer()
 
 ## ON BUTTONS PRESSED
 func _on_spell_pressed(spell_type_input):
@@ -236,6 +241,18 @@ func set_not_visible(s):
 		add_spell_label.modulate = Color(1, 1, 1, 1)
 		add_spell.show()
 		add_spell_label.show()
+	elif s == "add2":
+		self.v_box_container_2_visibility = true
+		self.v_box_container_3_visibility = true
+		self.v_box_container_4_visibility = true
+		self.v_box_container_5_visibility = true
+		set_combo(true)
+		self.disable_h = true
+		self.disable_e = true
+		add_spell.disabled = false
+		add_spell_label.modulate = Color(1, 1, 1, 1)
+		add_spell.show()
+		add_spell_label.show()
 	elif s == "c1":
 		set_combo(true)
 		self.v_box_container_2_visibility = true
@@ -250,7 +267,7 @@ func set_not_visible(s):
 		self.v_box_container_3_visibility = true
 		self.v_box_container_4_visibility = true
 		self.v_box_container_5_visibility = true
-		self.v_box_container_6_visibility = true
+		self.v_box_container_7_visibility = true
 		self.disable_h = true
 		self.disable_e = true
 	elif s == "c3":
@@ -275,6 +292,10 @@ func disable_add():
 func show_c1():
 	set_combo(true)
 	set_not_visible("c1")
+	
+func show_c2():
+	set_combo(true)
+	set_not_visible("c2")
 		
 		
 		

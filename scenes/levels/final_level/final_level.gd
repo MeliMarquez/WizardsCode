@@ -1,7 +1,7 @@
 extends GameLevel
 
 func set_text():
-	label_text = "¡Wow! 
+	label_text = "Wow! 
 	
 	You have defeated all the evil 
 	beings that were lurking around us! 

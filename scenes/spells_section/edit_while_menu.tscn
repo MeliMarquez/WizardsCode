@@ -1,7 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi4vdvord4m5j"]
+[gd_scene load_steps=7 format=3 uid="uid://bi4vdvord4m5j"]
 
 [ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_vvjhj"]
 [ext_resource type="Script" path="res://scenes/spells_section/edit_while_menu.gd" id="1_wagq8"]
+[ext_resource type="Texture2D" uid="uid://cu2ba43ftmwin" path="res://assets/UI/assets/ArrowRight.png" id="2_d2ntp"]
+
+[sub_resource type="Animation" id="Animation_0iwm8"]
+resource_name = "arrow"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(340, 380), Vector2(355, 380), Vector2(340, 380)]
+}
+
+[sub_resource type="Animation" id="Animation_tth2t"]
+resource_name = "arrow_2"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(340, 325), Vector2(355, 325), Vector2(340, 325)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e0tnw"]
+_data = {
+"arrow": SubResource("Animation_0iwm8"),
+"arrow_2": SubResource("Animation_tth2t")
+}
 
 [node name="EditWhileMenu" type="MarginContainer"]
 process_mode = 3
@@ -11,6 +52,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wagq8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(340, 325)
+texture = ExtResource("2_d2ntp")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -41,7 +86,7 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_vvjhj")
 theme_override_font_sizes/font_size = 50
-text = "Enemies"
+text = "Enemies (MP: 4)"
 
 [node name="Health" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -49,4 +94,9 @@ layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_vvjhj")
 theme_override_font_sizes/font_size = 50
-text = "Health"
+text = "Health (MP: 2)"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e0tnw")
+}

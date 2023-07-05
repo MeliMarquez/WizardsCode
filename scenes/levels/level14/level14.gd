@@ -2,10 +2,10 @@ extends GameLevel
 
 func set_text():
 	label_text = "Amazing! 
-	You have now a COMBO! It uses less
+	You have a COMBO now! It uses less
 	MP even though it is a mix!
-	This spell will attack one time all
-	purple bats it sees! 
+	This spell will attack each purple 
+	bat it touches one time! 
 	Try it on this bat."
 
 func hide_elements():

@@ -1,4 +1,5 @@
 extends GameLevel
+@onready var animation_player = $AnimationPlayer
 
 func set_text():
 	label_text = "Yes, yes, yes... 
@@ -7,6 +8,7 @@ func set_text():
 	until its life reaches zero. It 
 	consumes the same MP as the first 
 	attack. Very convenient, isn't it?"
+	animation_player.play("arrow")
 
 func hide_elements():
 	var menu_spell = get_node("Menu Spells/SpellsMenu")	

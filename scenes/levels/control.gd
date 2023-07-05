@@ -17,6 +17,9 @@ const levels = [
 	"res://scenes/levels/level13/level13.tscn",
 	"res://scenes/levels/level14/level14.tscn",
 	"res://scenes/levels/level15/level15.tscn",
+	"res://scenes/levels/level16/level16.tscn",
+	"res://scenes/levels/level17/level17.tscn",
+	"res://scenes/levels/level18/level18.tscn",
 	"res://scenes/levels/final_level/final_level.tscn",
 ]
 
@@ -36,7 +39,7 @@ func _ready():
 	audio_stream_player_2d.play()
 	main_menu_instance = main_menu.instantiate()
 	get_parent().add_child.call_deferred(main_menu_instance)
-	actual_level = 0#8
+	actual_level = 0
 
 func add_enemie():
 	self.enemies+=1

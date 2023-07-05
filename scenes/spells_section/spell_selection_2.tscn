@@ -1,0 +1,258 @@
+[gd_scene load_steps=14 format=3 uid="uid://ddha41g02i7gq"]
+
+[ext_resource type="FontFile" uid="uid://dbv6sim6040mc" path="res://assets/fonts/monogram.ttf" id="1_7vc0j"]
+[ext_resource type="Script" path="res://scenes/spells_section/spell_selection_2.gd" id="1_gwt2v"]
+[ext_resource type="Texture2D" uid="uid://ch6jqg6ojljtg" path="res://assets/images/spells/64x64_Aura_6.png" id="2_o1w3k"]
+[ext_resource type="Texture2D" uid="uid://orwfwujw7lcc" path="res://assets/images/sprites/purple_bat/purple_bat_icon.png" id="3_ie18c"]
+[ext_resource type="Texture2D" uid="uid://brppqck0er57c" path="res://assets/images/sprites/goblin/goblyn_icon.png" id="4_ilxu1"]
+[ext_resource type="Texture2D" uid="uid://cwjwpkaftlual" path="res://assets/images/sprites/blue_bat/blue_bat_icon.png" id="5_ct7ha"]
+[ext_resource type="Texture2D" uid="uid://bwcck5lhy65k8" path="res://assets/images/spells/64x64_FX_2.png" id="6_62jip"]
+[ext_resource type="Texture2D" uid="uid://daknw0kpe8tsj" path="res://assets/images/spells/64x64_FX_7.png" id="7_otaxx"]
+[ext_resource type="Texture2D" uid="uid://cu2ba43ftmwin" path="res://assets/UI/assets/ArrowRight.png" id="8_pf5xj"]
+
+[sub_resource type="Animation" id="Animation_a6suj"]
+resource_name = "arrow"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(576, 250), Vector2(576, 235), Vector2(576, 250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(320, 270), Vector2(335, 270), Vector2(320, 270)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(450, 550), Vector2(465, 550), Vector2(450, 550)]
+}
+
+[sub_resource type="Animation" id="Animation_20225"]
+resource_name = "arrow_2"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(576, 250), Vector2(576, 235), Vector2(576, 250)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(450, 350), Vector2(475, 350), Vector2(450, 350)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(450, 445), Vector2(475, 445), Vector2(450, 445)]
+}
+
+[sub_resource type="Animation" id="Animation_vlob4"]
+resource_name = "arrow_3"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(450, 410), Vector2(475, 410), Vector2(450, 410)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c45s7"]
+_data = {
+"arrow": SubResource("Animation_a6suj"),
+"arrow_2": SubResource("Animation_20225"),
+"arrow_3": SubResource("Animation_vlob4")
+}
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gwt2v")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 60
+text = "Spell"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 51
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="IfSpell" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("2_o1w3k")
+flat = true
+
+[node name="PurpleBat" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("3_ie18c")
+flat = true
+
+[node name="Goblin" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("4_ilxu1")
+flat = true
+
+[node name="BlueBat" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("5_ct7ha")
+flat = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="WhileSpell" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("6_62jip")
+flat = true
+
+[node name="Enemies" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Enemies"
+
+[node name="Health" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Health"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ForSpell" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_7vc0j")
+theme_override_font_sizes/font_size = 50
+icon = ExtResource("7_otaxx")
+flat = true
+
+[node name="SpinBox" type="SpinBox" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="Close" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Close"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 250)
+rotation = 1.5708
+texture = ExtResource("8_pf5xj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(450, 350)
+texture = ExtResource("8_pf5xj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(450, 445)
+texture = ExtResource("8_pf5xj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_c45s7")
+}
